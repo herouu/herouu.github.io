@@ -1,25 +1,24 @@
 ## rancher开发环境安装
-
-* ubuntu 换源脚本
-```
-curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh | sudo bash
+* ubuntu/centos 换源脚本
+```bash
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 ```
 
 * docker安装
-```
+```bash
 curl -sSL https://get.docker.com/ | CHANNEL=stable sh
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 curl -sSL https://get.daocloud.io/docker | sh
 ```
 
 * 添加docker用户组
-```
+```bash
 sudo groupadd docker
 sudo addgroup $USER docker
 ```
 
 * docker添加国内镜像
-```
+```bash
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
@@ -37,13 +36,13 @@ sudo systemctl restart docker
 参考: https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
 
 * portainer安装
-```
+```bash
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.17.1
 ```
 
 * rancher安装
-```
+```bash
 docker run -d --name=rancher --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
   -v /opt/rancher:/var/lib/rancher \
@@ -54,159 +53,74 @@ docker run -d --name=rancher --restart=unless-stopped \
 ```
 
 * k8s安装nacos https://artifacthub.io/
-```
+```bash
 helm repo add ygqygq2 https://ygqygq2.github.io/charts/
 helm install my-nacos --set replicaCount=2 ygqygq2/nacos --version 2.1.4
 ```
 
 * k3s
-```
+```bash
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
 ```
 
 * multipass
-```
+```bash
 multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
 ```
 
 
+## linux
 
-## k3s
-## 设置root用户密码 
-sudo passwd root
-## 添加用户sudo权限
-chmod u+w /etc/sudoers
-
-### linux换源脚本
-bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
-### docker安装
-```
-wget https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.x -O install.x && chmod +x install.x && ./install.x
-```
-### k3s 安装
-```
-curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_KUBECONFIG_MODE=644 sh -s - --docker
-```
-### 配置环境变量
-```
-vim /etc/profile
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-source /etc/profile
+### setting proxy
+```bash
+export http_proxy=http://192.168.0.1:10809
+export https_proxy=http://192.168.0.1:10809
+unset http_proxy
+unset https_proxy
 ```
 
-### helm 设置国内镜像 
-```
-helm repo remove stable
-helm repo add stable http://mirror.azure.cn/kubernetes/charts/
-helm repo update
-```
-### docker pull 设置代理
-```
-mkdir /etc/systemd/system/docker.service.d
-vim  http-proxy.conf 
-```
+### setting static address
+```bash
+nano /etc/sysconfig/network-scripts/ifcfg-enp0s3 #enp0s3为网卡名
+
+
+BOOTPROTO="static"        #dhcp改为static
+
+DNS1=192.168.0.1          #NDS
+IPADDR=192.168.0.171      #IP地址
+GATEWAY=192.168.0.1       #网关
+PREFIX=24
 
 ```
-[Service]
-Environment="HTTPS_PROXY=http://192.168.43.141:10809"
+修改后重启网络
 
-[Service]
-Environment="HTTP_PROXY=http://proxy.example.com:80/"
-Environment="HTTPS_PROXY=http://proxy.example.com:80/"
+### restart network
+```bash
+# centos7
+sudo systemctl restart network
+# rocky8
+sudo systemctl restart NetworkManager
 ```
 
-```
-# Flush changes:
-sudo systemctl daemon-reload
-# Verify that the configuration has been loaded:
-sudo systemctl show --property Environment docker
-sudo systemctl show --property Environment docker
-sudo systemctl restart docker
-```
-
-###  解决docker ps sudo命令
-```
-sudo gpasswd -a ${USER} docker 
-newgrp docker
-```
-
-## kubectl 命令
-
-### 获取所有pod状态
-kubectl get pods --all-namespaces
-
-### 查询pod描述
-kubectl describe pods -n openfaas nats-697d4bd9fd-gbmrf
-
-## openfaas
-密码
-```
-echo $(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)
-
-2EAQdSwxtrlb
-```
-
-- 参考文档
-
-https://stackoverflow.com/questions/23111631/cannot-download-docker-images-behind-a-proxy
-Kubernetes中文文档 https://hardocs.com/d/kubernetes/149-kubectl_describe.html
-
-https://blog.csdn.net/ilfrost/article/details/105921549
-
-https://www.jianshu.com/p/7d11d9e8792a
-
-
-## nodejs
+### install nodejs
+```bash
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash
 npm config set registry https://registry.npm.taobao.org 
 npm config get registry
+```
 
-
-## maven 
-```
-<mirror>
-    <id>aliyunmaven</id>
-    <mirrorOf>*</mirrorOf>
-    <name>阿里云公共仓库</name>
-    <url>https://maven.aliyun.com/repository/public</url>
-</mirror>
-https://developer.aliyun.com/mirror/maven
-```
-### adoptjdk install
-```
+### install java
+```bash
 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 sudo add-apt-repository --yes https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/deb
 sudo apt-get update
 ```
-# linux 代理工具 
-apt-get install proxychains
-配置/etc/proxychains.conf
 
 
-# 代理设置
-### linux
-```
-export http_proxy=http://192.168.0.7:10809
-export https_proxy=http://192.168.0.7:10809
-unset http_proxy
-unset https_proxy
-```
-### window
-#### cmd
-```
-set http_proxy=http://127.0.0.1:10809
-set https_proxy=http://127.0.0.1:10809
-```
-### powershell
-```
-$env:HTTP_PROXY="http://127.0.0.1:10809"
-$env:HTTPS_PROXY="http://127.0.0.1:10809"
-```
+## window
 
 ### scoop安装 
-```
-powershell 代理
-
+```bash
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
 $env:SCOOP='D:\Applications\Scoop'
@@ -217,7 +131,27 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 iwr -useb get.scoop.sh | iex
 ```
 
-### 重启网络
+### cmd代理
+```bash
+set http_proxy=http://127.0.0.1:10809
+set https_proxy=http://127.0.0.1:10809
 ```
-sudo systemctl restart NetworkManager
+### powershell代理
+```bash
+$env:HTTP_PROXY="http://127.0.0.1:10809"
+$env:HTTPS_PROXY="http://127.0.0.1:10809"
+```
+
+
+
+## 常用镜像源
+
+### maven 
+```
+<mirror>
+    <id>aliyunmaven</id>
+    <mirrorOf>*</mirrorOf>
+    <name>阿里云公共仓库</name>
+    <url>https://maven.aliyun.com/repository/public</url>
+</mirror>
 ```
