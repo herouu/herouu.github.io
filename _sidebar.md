@@ -1,2 +1,1 @@
-* dev环境
-  * [rancher](linux/rancher安装.md)
+* [dev环境](linux/rancher安装.md)

@@ -13,8 +13,7 @@ curl -sSL https://get.daocloud.io/docker | sh
 
 * 添加docker用户组
 ```bash
-sudo groupadd docker
-sudo addgroup $USER docker
+sudo usermod -a -G docker $USER
 ```
 
 * docker添加国内镜像
@@ -68,6 +67,19 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIR
 multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
 ```
 
+## docker
+
+### 常用命令
+```bash
+# 清空null镜像
+docker image prune -f
+```
+
+### 有用的镜像
+
+* v2rayA(https://v2raya.org/)
+* serjs/go-socks5-proxy(https://github.com/serjs/socks5-server)
+
 
 ## linux
 
@@ -116,6 +128,10 @@ sudo add-apt-repository --yes https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/
 sudo apt-get update
 ```
 
+### 修改主机名
+```bash
+hostnamectl set-hostname 主机名
+```
 
 ## window
 
@@ -155,3 +171,8 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
     <url>https://maven.aliyun.com/repository/public</url>
 </mirror>
 ```
+
+
+## 其他工具
+
+* Doks(https://getdoks.org/) 文档生成工具,类似hugo,hexo
