@@ -108,7 +108,6 @@ systemctl restart k3s
 
 ```
 
-<<<<<<< HEAD
 5. iptables v1.8.2 fail
 
 ```bash
@@ -122,13 +121,14 @@ sudo update-alternatives --config iptables
 /usr/sbin/iptables-legacy 
 ```
 
-6. debian   Error: failed to create containerd 
+6. debian   Error: failed to create containerd
 
 ```bash
 sudo apt install apparmor apparmor-utils
 ```
 
 7. rancher忘记密码,重置admin密码
+
 ```bash
 kubectl -n cattle-system exec $(kubectl -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
 eg:
@@ -136,13 +136,14 @@ Wq3rv0jTt6UqKjNW0zoc
 ```
 
 8. error: error loading config file "/etc/rancher/k3s/k3s.yaml": open /etc/rancher/k3s/k3s.yaml: permission denied
+
 ```bash
 echo K3S_KUBECNFIG_MODE=\"644\" >> sudo /etc/systemd/system/k3s.service.env
 # 注意双引号""
 ```
-=======
->>>>>>> orign/main
+
 ### rancher单机server安装
+
 ```bash
 docker run -d --name=rancher --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
@@ -153,15 +154,14 @@ docker run -d --name=rancher --restart=unless-stopped \
   rancher/rancher:lastest
 ```
 
-参考: http://note.eta.pub/2023/03/09/rancher-v2-7-cluster/
-
-
+参考: <http://note.eta.pub/2023/03/09/rancher-v2-7-cluster/>
 
 ### 常用helm charts
 
-* https://artifacthub.io/
+* <https://artifacthub.io/>
 
-* nacos 
+* nacos
+
 ```bash
 helm repo add ygqygq2 https://ygqygq2.github.io/charts/
 helm install my-nacos --set replicaCount=3 ygqygq2/nacos --version 2.1.4

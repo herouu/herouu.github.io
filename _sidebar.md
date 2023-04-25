@@ -1,3 +1,5 @@
 * [dev环境](linux/常用.md)
 * [rancher](linux/rancher.md)
 * [mysql](linux/mysql.md)
+* [docker](linux/docker.md)
+* [jenkins](linux/jenkins.md)
