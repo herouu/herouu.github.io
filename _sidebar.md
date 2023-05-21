@@ -3,3 +3,6 @@
 * [mysql](linux/mysql.md)
 * [docker](linux/docker.md)
 * [jenkins](linux/jenkins.md)
+* [kafka](linux/kafka.md)
+* [redis](linux/redis.md)
+* [startRocks](linux/start_rocks.md)
