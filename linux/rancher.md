@@ -1,9 +1,16 @@
 ### rancher高可用安装
-
+* 版本矩阵
+  https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-7-5/
 * k3s安装
 
 ```bash
+# server
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.24.10+k3s1 sh -s -
+
+# node
+# 获取token /var/lib/rancher/k3s/server/token
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.24.10+k3s1 K3S_URL=https://192.168.1.181:6443 K3S_TOKEN=token sh -
+
 ```
 
 * helm3.2.4安装
@@ -42,7 +49,7 @@ helm install \
 
 ```bash
 helm install rancher rancher-stable/rancher \
- --version 2.7.1 \
+ --version 2.7.5 \
  --namespace cattle-system \
  --set rancherImage=registry.cn-hangzhou.aliyuncs.com/rancher/rancher \
  --set hostname=rancher.herouu \
@@ -140,6 +147,12 @@ Wq3rv0jTt6UqKjNW0zoc
 ```bash
 echo K3S_KUBECNFIG_MODE=\"644\" >> sudo /etc/systemd/system/k3s.service.env
 # 注意双引号""
+```
+
+9. rancher忘记密码
+
+```shell
+ kubectl exec -it rancher-545d487968-78skn -n cattle-system --reset-password
 ```
 
 ### rancher单机server安装
