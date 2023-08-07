@@ -3,8 +3,7 @@
 * docker安装
 
 ```bash
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-curl -sSL https://get.daocloud.io/docker | sh
+bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
 ```
 
 * 添加docker用户组
