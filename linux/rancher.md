@@ -107,8 +107,6 @@ sudo tee /etc/rancher/k3s/registries.yaml <<-'EOF'
 mirrors:
   docker.io:
     endpoint:
-        - https://docker.m.daocloud.io
-        - https://dockerproxy.com
         - https://docker.nju.edu.cn
 EOF
 systemctl restart k3s
@@ -178,4 +176,21 @@ docker run -d --name=rancher --restart=unless-stopped \
 ```bash
 helm repo add ygqygq2 https://ygqygq2.github.io/charts/
 helm install my-nacos --set replicaCount=3 ygqygq2/nacos --version 2.1.4
+```
+
+
+### kubectl 命令补全
+安装bash-completion：
+
+```
+yum install -y bash-completion
+source /usr/share/bash-completion/bash_completion
+```
+
+
+应用kubectl的completion到系统环境中
+
+```
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
