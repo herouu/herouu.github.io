@@ -7,3 +7,4 @@
 * [kafka](docs/kafka.md)
 * [redis](docs/redis.md)
 * [startRocks](docs/start_rocks.md)
+* [other](docs/other.md)
