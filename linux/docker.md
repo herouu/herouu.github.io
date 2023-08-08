@@ -19,8 +19,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
-        "https://docker.m.daocloud.io",
-        "https://dockerproxy.com",
+        "https://mirror.ccs.tencentyun.com",
         "https://docker.nju.edu.cn"
     ]
 }
@@ -113,4 +112,21 @@ services:
 
 ```
  docker run --name nginx -p 80:80 -v /etc/nginx:/etc/nginx -v /var/log/nginx:/var/log/nginx -d nginx
+```
+
+* nginx proxy manager
+
+```
+version: '3.8'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
 ```
