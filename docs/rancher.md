@@ -147,12 +147,6 @@ echo K3S_KUBECNFIG_MODE=\"644\" >> sudo /etc/systemd/system/k3s.service.env
 # 注意双引号""
 ```
 
-9. rancher忘记密码
-
-```shell
- kubectl exec -it rancher-545d487968-78skn -n cattle-system --reset-password
-```
-
 ### rancher单机server安装
 
 ```bash
