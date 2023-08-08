@@ -109,6 +109,14 @@ scoop install spc/7zip spc/aria2 spc/scoop-search
 
 https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E7%BA%AF-ip
 
+```
+docker run -d \
+--name derper \
+--restart always  \
+-p 5443:443 \
+-p 3478:3478/udp  \
+-d hausen1012/ip_derper:latest
+```
 #### install java
 
 ```bash
