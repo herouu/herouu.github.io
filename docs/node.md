@@ -4,7 +4,10 @@
 # window
 scoop install fnm
 
-# linux 编辑.bashrc
+# linux
+curl -fsSL https://fnm.vercel.app/install | bash
+
+#  编辑.bashrc
 export FNM_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node/
 eval "$(fnm env --use-on-cd)"
 ```

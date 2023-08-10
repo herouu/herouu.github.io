@@ -63,7 +63,7 @@ systemctl restart docker
 
 ```bash
 docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.17.1
+docker run -d -p 8100:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.17.1
 ```
 
 * v2rayA(<https://v2raya.org/>)
@@ -120,13 +120,13 @@ services:
 version: '3.8'
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: 'chishin/nginx-proxy-manager-zh:release'
     restart: unless-stopped
     ports:
       - '80:80'
       - '81:81'
       - '443:443'
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - /root/data:/data
+      - /root/letsencrypt:/etc/letsencrypt
 ```

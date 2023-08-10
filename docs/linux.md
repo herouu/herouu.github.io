@@ -154,4 +154,44 @@ df -lh
 leapp answer --section remove_pam_pkcs11_module_check.confirm=True
 ```
 
+### vps测速
 
+*
+```
+
+* 带宽
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
+sudo yum install speedtest
+
+
+* 
+wget -O jcnfbox.sh https://raw.githubusercontent.com/Netflixxp/jcnf-box/main/jcnfbox.sh && chmod +x jcnfbox.sh && clear && ./jcnfbox.sh
+
+
+* 综合测试工具
+wget -qO- https://raw.githubusercontent.com/LemonBench/LemonBench/main/LemonBench.sh | bash -s -- --fast
+
+* ping值
+https://tools.ipip.net/newping.php
+https://ping.pe/
+
+```
+
+### linux安全
+
+* ssh:notty
+`lastb`命令,出现大量的输出说明你的服务器正在遭受黑客们的暴力破解
+
+```
+* 修改ssh默认端口
+* 禁止root登录
+* 使用ssh免秘钥登录
+* 禁用ip
+```
+
+* ssh连接经常断线,开启如下配置
+```
+TCPKeepAlive yes
+ClientAliveInterval 360
+ClientAliveCountMax 10
+```
