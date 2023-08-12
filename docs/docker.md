@@ -122,11 +122,14 @@ services:
   app:
     image: 'chishin/nginx-proxy-manager-zh:release'
     restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - '80:80'
       - '81:81'
       - '443:443'
     volumes:
-      - /root/data:/data
-      - /root/letsencrypt:/etc/letsencrypt
+      - /root/docker/nginx/data:/data
+      - /root/docker/nginx/letsencrypt:/etc/letsencrypt
+      - /root/app:/root/app
 ```
