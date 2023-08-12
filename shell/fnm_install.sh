@@ -82,9 +82,9 @@ download_fnm() {
     brew install fnm
   else
     if [ "$RELEASE" = "latest" ]; then
-      URL="https://github.com/Schniz/fnm/releases/latest/download/$FILENAME.zip"
+      URL="https://ghproxy.com/https://github.com/Schniz/fnm/releases/latest/download/$FILENAME.zip"
     else
-      URL="https://github.com/Schniz/fnm/releases/download/$RELEASE/$FILENAME.zip"
+      URL="https://ghproxy.com/https://github.com/Schniz/fnm/releases/download/$RELEASE/$FILENAME.zip"
     fi
 
     DOWNLOAD_DIR=$(mktemp -d)

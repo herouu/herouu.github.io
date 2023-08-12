@@ -5,7 +5,11 @@
 scoop install fnm
 
 # linux
+
 curl -fsSL https://fnm.vercel.app/install | bash
+
+# 使用不了访问
+curl -fsSL https://herouu.github.io/shell/fnm_install.sh | bash
 
 #  编辑.bashrc
 export FNM_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node/
