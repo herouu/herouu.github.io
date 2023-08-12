@@ -115,11 +115,12 @@ hostnamectl set-hostname 主机名
 
 ```
 # 显示包括子目录在内的最大文件及文件夹
- du -Sh | sort -rh | head -5
+du -Sh | sort -rh | head -5
+
 # 显示文件夹 
- du -h | sort -rh  | head -5
+du -h | sort -rh  | head -5
  
- du --max-depth=1 -h / | sort -rh  | head -5
+du --max-depth=1 -h / | sort -rh  | head -5
 ```
 
 ### multipass
@@ -156,7 +157,6 @@ leapp answer --section remove_pam_pkcs11_module_check.confirm=True
 
 ### vps测速
 
-*
 ```
 
 * 带宽
@@ -195,3 +195,18 @@ TCPKeepAlive yes
 ClientAliveInterval 360
 ClientAliveCountMax 10
 ```
+### scp
+
+```
+# 从本地复制到远程
+scp -r local_folder remote_username@remote_ip:remote_folder
+
+# 从远处复制到本地
+scp -r remote_username@remote_ip:remote_folder local_folder
+
+```
+
+
+### 学习文档
+
+[Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
