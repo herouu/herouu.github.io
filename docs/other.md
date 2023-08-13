@@ -99,7 +99,6 @@ scoop help
 scoop install spc/7zip spc/aria2 spc/scoop-search
 ```
 
-
 #### bucket自定义
 
 * Scoop bucket(<https://ericzong.github.io/posts/tool-scoop-bucket.html>)
@@ -109,6 +108,7 @@ scoop install spc/7zip spc/aria2 spc/scoop-search
 
 https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E7%BA%AF-ip
 
+* 免认证docker image
 ```
 docker run -d \
 --name derper \
@@ -117,6 +117,29 @@ docker run -d \
 -p 3478:3478/udp  \
 -d hausen1012/ip_derper:latest
 ```
+
+* 配置tailscale -> Access Controls
+```
+	"derpMap": {
+		"OmitDefaultRegions": false,
+		"Regions": {
+			"901": {
+				"RegionID":   901,
+				"RegionCode": "myderp",
+				"RegionName": "myderp",
+				"Nodes": [{
+					"Name":             "myderp",
+					"RegionID":         901,
+					"HostName":         "frp.top",
+					"DERPPort":         6083,
+					"InsecureForTests": true,
+				}],
+			},
+		},
+	}
+
+```
+
 #### install java
 
 ```bash
