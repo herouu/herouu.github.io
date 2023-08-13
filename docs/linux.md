@@ -1,5 +1,3 @@
-## linux
-
 ### ubuntu/centos 换源脚本
 
 ```bash
