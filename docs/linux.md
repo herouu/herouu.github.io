@@ -206,6 +206,13 @@ scp -r remote_username@remote_ip:remote_folder local_folder
 
 ```
 
+### frp
+
+```
+wget -O frpc https://nya.globalslb.net/natfrp/client/frpc/0.45.0-sakura-7/frpc_linux_amd64
+chmod u+x /root/frpc/frpc && ln -s /root/frpc/frpc /usr/local/bin/frpc
+```
+
 
 ### 学习文档
 
