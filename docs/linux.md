@@ -127,23 +127,6 @@ du --max-depth=1 -h / | sort -rh  | head -5
 multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
 ```
 
-### linux磁盘扩容
-
-```
-fdisk -l
-fdisk /dev/vdb
-
-pvcreate /dev/sdb1
-vgdisplay
-
-vgextend centos /dev/sdb1
-lvextend -L +100G /dev/mapper/centos-root
-
-xfs_growfs /dev/mapper/centos-root
-df -lh
-```
-参考 https://www.cnblogs.com/lvzhenjiang/p/15887422.html
-
 ### centos7升级rockylinux8
 
 参考 https://blog.csdn.net/qq_44379042/article/details/130981771
@@ -209,6 +192,44 @@ scp -r remote_username@remote_ip:remote_folder local_folder
 ```
 wget -O frpc https://nya.globalslb.net/natfrp/client/frpc/0.45.0-sakura-7/frpc_linux_amd64
 chmod u+x /root/frpc/frpc && ln -s /root/frpc/frpc /usr/local/bin/frpc
+```
+
+### 磁盘扩容
+
+```
+fdisk -l
+fdisk /dev/vdb
+
+pvcreate /dev/sdb1
+vgdisplay
+
+vgextend centos /dev/sdb1
+lvextend -L +100G /dev/mapper/centos-root
+
+xfs_growfs /dev/mapper/centos-root
+df -lh
+```
+参考 https://www.cnblogs.com/lvzhenjiang/p/15887422.html
+
+### cpu
+```
+* 查看当前所有CPU的信息
+cpupower -c all frequency-info
+
+* 查看某个CPU的信息
+cpupower -c 1 frequency-info
+
+* 查看当前cpu可用的策略
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+
+* 查看当前cpu生效的策略
+ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+* 设置cpu模式 performance-性能模式 powersave-省电模式 conservative-保守模式
+cpupower -c all frequency-set -g powersave
+
+* 查看cpu频率
+cat /proc/cpuinfo | grep "cpu MHz*"
 ```
 
 
