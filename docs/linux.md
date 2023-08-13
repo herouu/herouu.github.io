@@ -109,18 +109,6 @@ systemctl enable ntpd
 hostnamectl set-hostname 主机名
 ```
 
-### 
-
-```
-# 显示包括子目录在内的最大文件及文件夹
-du -Sh | sort -rh | head -5
-
-# 显示文件夹 
-du -h | sort -rh  | head -5
- 
-du --max-depth=1 -h / | sort -rh  | head -5
-```
-
 ### multipass
 
 ```bash
@@ -192,6 +180,17 @@ scp -r remote_username@remote_ip:remote_folder local_folder
 ```
 wget -O frpc https://nya.globalslb.net/natfrp/client/frpc/0.45.0-sakura-7/frpc_linux_amd64
 chmod u+x /root/frpc/frpc && ln -s /root/frpc/frpc /usr/local/bin/frpc
+```
+
+### 文件占用
+```
+# 显示包括子目录在内的最大文件及文件夹
+du -Sh | sort -rh | head -5
+
+# 显示文件夹 
+du -h | sort -rh  | head -5
+ 
+du --max-depth=1 -h / | sort -rh  | head -5
 ```
 
 ### 磁盘扩容
