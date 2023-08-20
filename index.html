@@ -7,12 +7,17 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="icon" href="favicon.ico" />	
-  <link rel="stylesheet" href="//unpkg.com/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/docsify/themes/vue.css">
 </head>
 <body>
   <div id="app"></div>
-  <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
-  <script>
+
+
+
+    <!-- github编辑 -->
+    <script src="https://fastly.jsdelivr.net/npm/docsify-edit-on-github"></script>
+
+    <script>
       window.$docsify = {
       name: 'herouu的wiki',
       repo: 'https://github.com/herouu/herouu.github.io',
@@ -39,18 +44,32 @@
     }
   </script>
   <!-- Docsify v4 -->
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <!--Java代码高亮-->
-  <script src="//unpkg.com/prismjs/components/prism-java.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-  <script src="//unpkg.com/prismjs@1.29.0/components/index.js"></script>
-  <!--全文搜索,直接用官方提供的无法生效-->
-  <script src="https://cdn.bootcss.com/docsify/4.5.9/plugins/search.min.js"></script>
+
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-bash.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-java.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-go.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-python.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-yaml.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-docker.min.js"></script>
+
+
+  <!--全文搜索-->
+  <script src="https://fastly.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
   <!-- 复制到剪贴板 -->
-  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="https://fastly.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+
   <!-- 图片缩放 -->
-  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
   <!-- 字数统计 -->
-  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+
+  <!-- emoji -->
+  <script src="https://fastly.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 ### rancher高可用安装
+
 * 版本矩阵
-  https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-7-5/
+  <https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-7-5/>
 * k3s安装
 
 ```bash
@@ -56,9 +57,9 @@ helm install rancher rancher-stable/rancher \
  --set bootstrapPassword=admin
 ```
 
-* 遇到问题
+### 遇到问题
 
-1. (RHEL7/CentOS7: User namespaces disabled; add 'user_namespace.enable=1' to boot command line) (fail)
+* (RHEL7/CentOS7: User namespaces disabled; add 'user_namespace.enable=1' to boot command line) (fail)
 
 ```bash
 Optional Features:
@@ -67,11 +68,10 @@ Optional Features:
   
 # 解决
 grubby --args="user_namespace.enable=1" --update-kernel="$(grubby --default-kernel)"
-reboot  
-  
+reboot    
 ```
 
-2. Error: Kubernetes cluster unreachable
+* Error: Kubernetes cluster unreachable
 
 ```bash
 helm list --all-namespaces
@@ -90,7 +90,7 @@ Linux加载环境变量的顺序如下：
 ~/.bashrc
 ```
 
-3. 替换rancher local集群仓库地址
+* 替换rancher local集群仓库地址
 
 ``` bash
 https://git.rancher.io 
@@ -99,7 +99,7 @@ https://github.com/rancher
 https://gitee.com/rancher
 ```
 
-4. rancher helm-operation  ImagePullBackOff  
+* rancher helm-operation  ImagePullBackOff  
 
 ```bash
 # 设置镜像仓库
@@ -113,7 +113,7 @@ systemctl restart k3s
 
 ```
 
-5. iptables v1.8.2 fail
+* iptables v1.8.2 fail
 
 ```bash
 System:
@@ -126,13 +126,13 @@ sudo update-alternatives --config iptables
 /usr/sbin/iptables-legacy 
 ```
 
-6. debian   Error: failed to create containerd
+* debian   Error: failed to create containerd
 
 ```bash
 sudo apt install apparmor apparmor-utils
 ```
 
-7. rancher忘记密码,重置admin密码
+* rancher忘记密码,重置admin密码
 
 ```bash
 kubectl -n cattle-system exec $(kubectl -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
@@ -140,7 +140,7 @@ eg:
 Wq3rv0jTt6UqKjNW0zoc
 ```
 
-8. error: error loading config file "/etc/rancher/k3s/k3s.yaml": open /etc/rancher/k3s/k3s.yaml: permission denied
+* error: error loading config file "/etc/rancher/k3s/k3s.yaml": open /etc/rancher/k3s/k3s.yaml: permission denied
 
 ```bash
 echo K3S_KUBECNFIG_MODE=\"644\" >> sudo /etc/systemd/system/k3s.service.env
@@ -172,19 +172,18 @@ helm repo add ygqygq2 https://ygqygq2.github.io/charts/
 helm install my-nacos --set replicaCount=3 ygqygq2/nacos --version 2.1.4
 ```
 
-
 ### kubectl 命令补全
+
 安装bash-completion：
 
-```
+```bash
 yum install -y bash-completion
 source /usr/share/bash-completion/bash_completion
 ```
 
-
 应用kubectl的completion到系统环境中
 
-```
+```bash
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```

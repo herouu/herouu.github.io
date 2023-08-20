@@ -26,7 +26,7 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 
 ### maven
 
-```
+```xml
 <mirror>
     <id>aliyunmaven</id>
     <mirrorOf>*</mirrorOf>
@@ -37,16 +37,25 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 
 ### PyPI换源
 
-```
+```bash
 pip config set global.extra-index-url "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 ```
 
-### github地址解析
+### github加速
 
-```
+```text
+# hostname
 199.232.4.133 raw.githubusercontent.com
 140.82.113.4 github.com
+
+# 加速网站
+
+https://gitmirror.com/
+https://ghproxy.com/
+https://ghps.cc/
+https://gh.ddlc.top/
+
 ```
 
 ## 其他工具
@@ -78,7 +87,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 iwr -useb get.scoop.sh | iex
 ```
 
-```
+```bash
 # install
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 $env:SCOOP='D:\Applications\Scoop'
@@ -103,13 +112,13 @@ scoop install spc/7zip spc/aria2 spc/scoop-search
 
 * Scoop bucket(<https://ericzong.github.io/posts/tool-scoop-bucket.html>)
 
-
 #### tailscale自建节点
 
-https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E7%BA%AF-ip
+<https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E7%BA%AF-ip>
 
 * 免认证docker image
-```
+
+```bash
 docker run -d \
 --name derper \
 --restart always  \
@@ -119,24 +128,25 @@ docker run -d \
 ```
 
 * 配置tailscale -> Access Controls
-```
-	"derpMap": {
-		"OmitDefaultRegions": false,
-		"Regions": {
-			"901": {
-				"RegionID":   901,
-				"RegionCode": "myderp",
-				"RegionName": "myderp",
-				"Nodes": [{
-					"Name":             "myderp",
-					"RegionID":         901,
-					"HostName":         "frp.top",
-					"DERPPort":         6083,
-					"InsecureForTests": true,
-				}],
-			},
-		},
-	}
+
+```json
+ "derpMap": {
+  "OmitDefaultRegions": false,
+  "Regions": {
+   "901": {
+    "RegionID":   901,
+    "RegionCode": "myderp",
+    "RegionName": "myderp",
+    "Nodes": [{
+     "Name":             "myderp",
+     "RegionID":         901,
+     "HostName":         "frp.top",
+     "DERPPort":         6083,
+     "InsecureForTests": true,
+    }],
+   },
+  },
+ }
 
 ```
 

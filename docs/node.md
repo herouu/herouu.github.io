@@ -1,6 +1,6 @@
 ### fnm
 
-```
+```bash
 # window
 scoop install fnm
 
@@ -25,7 +25,7 @@ npm config get registry
 
 ### pm2
 
-```
+```bash
 # 安装
 npm -g install pm2
 
@@ -42,7 +42,8 @@ pm2 startup
 ```
 
 ### .npmrc文件
-```
+
+```bash
 registry=https://registry.npmmirror.com
 
 disturl=https://registry.npmmirror.com/-/binary/node/
@@ -61,3 +62,14 @@ node_sqlite3_binary_host_mirror=https://registry.npmmirror.com/-/binary/sqlite3
 better_sqlite3_binary_host_mirror=https://registry.npmmirror.com/-/binary/better-sqlite3
 
 ```
+
+### cdn加速
+
+cdn.jsdelivr.net替代
+
+* fastly.jsdelivr.net
+
+
+### vuepress
+
+* <https://theme-hope.vuejs.press/>

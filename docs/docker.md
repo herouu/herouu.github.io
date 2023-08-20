@@ -1,4 +1,4 @@
-### command
+### 安装
 
 * docker安装
 
@@ -46,7 +46,7 @@ docker load -i image.tar
 
 * docker-proxy端口占用无法重启
 
-```
+```text
 [root@localhost ~]# ps -ef | grep docker-proxy
 root      1329   987  0 11:56 ?        00:00:00 [docker-proxy] <defunct>
 root      1333   987  0 11:56 ?        00:00:00 [docker-proxy] <defunct>
@@ -82,7 +82,7 @@ docker run -d \
 
 * gitea
 
-```
+```yaml
 version: "3"
 
 networks:
@@ -110,13 +110,13 @@ services:
 
 * nginx
 
-```
+```bash
  docker run --name nginx -p 80:80 -v /etc/nginx:/etc/nginx -v /var/log/nginx:/var/log/nginx -d nginx
 ```
 
 * nginx proxy manager
 
-```
+```yaml
 version: '3.8'
 services:
   app:

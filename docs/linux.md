@@ -45,7 +45,7 @@ nmcli conn up <SSID>
 
 ### 重启网卡
 
-```
+```bash
  ip link set wlp5s0 down
  ip link set wlp5s0 up
 ```
@@ -54,7 +54,7 @@ nmcli conn up <SSID>
 
 * SIOCSIFFLAGS: Operation not possible due to RF-kill
 
-```
+```bash
 rfkill list
 rfkill unblock all
 ```
@@ -117,16 +117,16 @@ multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
 
 ### centos7升级rockylinux8
 
-参考 https://blog.csdn.net/qq_44379042/article/details/130981771
+参考 <https://blog.csdn.net/qq_44379042/article/details/130981771>
 
-```
+```bash
 应答  /var/log/leapp/answerfile
 leapp answer --section remove_pam_pkcs11_module_check.confirm=True
 ```
 
 ### vps测速
 
-```
+```bash
 
 * 带宽
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
@@ -151,7 +151,7 @@ https://ping.pe/
 * ssh:notty
 `lastb`命令,出现大量的输出说明你的服务器正在遭受黑客们的暴力破解
 
-```
+```text
 * 修改ssh默认端口
 * 禁止root登录
 * 使用ssh免秘钥登录
@@ -159,7 +159,8 @@ https://ping.pe/
 ```
 
 * ssh连接经常断线,开启如下配置
-```
+
+```text
 TCPKeepAlive yes
 ClientAliveInterval 360
 ClientAliveCountMax 10
@@ -167,7 +168,7 @@ ClientAliveCountMax 10
 
 ### scp
 
-```
+```bash
 # 从本地复制到远程
 scp -r local_folder remote_username@remote_ip:remote_folder
 
@@ -178,13 +179,14 @@ scp -r remote_username@remote_ip:remote_folder local_folder
 
 ### frp
 
-```
+```bash
 wget -O frpc https://nya.globalslb.net/natfrp/client/frpc/0.45.0-sakura-7/frpc_linux_amd64
 chmod u+x /root/frpc/frpc && ln -s /root/frpc/frpc /usr/local/bin/frpc
 ```
 
 ### 文件占用
-```
+
+```bash
 # 显示包括子目录在内的最大文件及文件夹
 du -Sh | sort -rh | head -5
 
@@ -196,7 +198,7 @@ du --max-depth=1 -h / | sort -rh  | head -5
 
 ### 磁盘扩容
 
-```
+```bash
 fdisk -l
 fdisk /dev/vdb
 
@@ -209,10 +211,12 @@ lvextend -L +100G /dev/mapper/centos-root
 xfs_growfs /dev/mapper/centos-root
 df -lh
 ```
-参考 https://www.cnblogs.com/lvzhenjiang/p/15887422.html
+
+参考 <https://www.cnblogs.com/lvzhenjiang/p/15887422.html>
 
 ### cpu
-```
+
+```bash
 * 查看当前所有CPU的信息
 cpupower -c all frequency-info
 
@@ -231,7 +235,6 @@ cpupower -c all frequency-set -g powersave
 * 查看cpu频率
 cat /proc/cpuinfo | grep "cpu MHz*"
 ```
-
 
 ### 学习文档
 

@@ -1,10 +1,13 @@
-* [linux](docs/linux.md)
-* [node](docs/node.md)
-* [docker](docs/docker.md)
-* [rancher](docs/rancher.md)
-* [mysql](docs/mysql.md)
-* [jenkins](docs/jenkins.md)
-* [kafka](docs/kafka.md)
-* [redis](docs/redis.md)
-* [startRocks](docs/start_rocks.md)
-* [other](docs/other.md)
+
+* wiki
+
+    * [linux](docs/linux.md)
+    * [docker](docs/docker.md)
+    * [rancher](docs/rancher.md)    
+    * [database](docs/db.md)
+    * [kafka](docs/kafka.md)
+    * [jenkins](docs/jenkins.md)
+    * [other](docs/other.md)
+    * [node](docs/node.md)
+
+* 杂项  
