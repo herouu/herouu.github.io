@@ -10,4 +10,4 @@
     * [other](docs/other.md)
     * [node](docs/node.md)
 
-* 杂项  
+* 万花筒  

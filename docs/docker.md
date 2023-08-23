@@ -68,8 +68,19 @@ docker run -d -p 8100:8000 -p 9443:9443 --name portainer --restart=always -v /va
 
 * v2rayA(<https://v2raya.org/>)
 * serjs/go-socks5-proxy(<https://github.com/serjs/socks5-server>)
+
+```bash
+docker run -d --restart=always --name socks5 -p 1090:9090 -e PROXY_PORT=9090 serjs/go-socks5-proxy
+```
+
 * v2rayPi(<https://github.com/twotreesus/V2RayPi>)
 * calibre-web(<https://hub.docker.com/r/johngong/calibre-web>)
+* gost
+
+```bash
+docker run -p 1080:1080 -it -d --restart=always --name gost gogost/gost -L socks5://:1080
+```
+
 
 ```bash
 docker run -d \

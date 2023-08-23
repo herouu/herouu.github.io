@@ -149,6 +149,11 @@ docker run -d \
  }
 
 ```
+#### window网络重置
+
+```shell
+netsh winsock reset
+```
 
 #### install java
 
@@ -157,3 +162,21 @@ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo 
 sudo add-apt-repository --yes https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/deb
 sudo apt-get update
 ```
+
+#### powershell(cmd)美化
+
+* [starship](https://github.com/starship/starship)
+
+
+```shell
+# cmd 
+scoop install clink 
+# 创建lua clink\starship.lua,文件中添加
+load(io.popen('starship init cmd'):read("*a"))()
+
+# powershell
+$PROFILE 新增
+Invoke-Expression (&starship init powershell)
+```
+
+

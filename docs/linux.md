@@ -236,6 +236,44 @@ cpupower -c all frequency-set -g powersave
 cat /proc/cpuinfo | grep "cpu MHz*"
 ```
 
+### DNS
+
+#### 公共DNS
+
+>[!NOTE|label:阿里]
+> 223.5.5.5 223.6.6.6 
+>
+> * 阿里DoH  
+https://dns.alidns.com/dns-query  
+https://alidns_ip/dns-query
+
+
+>[!NOTE|label:腾讯]
+>119.29.29.29 182.254.116.116
+>
+> * 腾讯DoH  
+https://doh.pub/dns-query
+
+#### adguardhome  
+
+```shell
+docker run -d --name adguardhome \
+    --restart unless-stopped \
+    -v /my/own/workdir:/opt/adguardhome/work \
+    -v /my/own/confdir:/opt/adguardhome/conf \
+    --net=host \
+    -d adguard/adguardhome
+# 详细参数请参考 https://hub.docker.com/r/adguard/adguardhome
+
+```
+
+#### mosdns
+
+* [mosdns](https://github.com/IrineSistiana/mosdns)
+* [easymosdns](https://github.com/pmkol/easymosdns)
+
+参考: [利用 Mosdns 和 AdGuardHome 搭建自己的 DNS](https://www.xukecheng.tech/use-mosdns-and-adguardhome-to-build-your-own-dns)
+
 ### 学习文档
 
 [Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
