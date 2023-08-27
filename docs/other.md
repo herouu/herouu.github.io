@@ -2,7 +2,7 @@
 
 ### git
 
-```
+```shell
  git config --global http.proxy http://127.0.0.1:10809
  git config --global --unset http.proxy
  git config -l --global
@@ -149,6 +149,7 @@ docker run -d \
  }
 
 ```
+
 #### window网络重置
 
 ```shell
@@ -167,7 +168,6 @@ sudo apt-get update
 
 * [starship](https://github.com/starship/starship)
 
-
 ```shell
 # cmd 
 scoop install clink 
@@ -179,4 +179,39 @@ $PROFILE 新增
 Invoke-Expression (&starship init powershell)
 ```
 
+### winsw
 
+`scoop install winsw-pre`
+
+* gost
+
+```xml
+<service>
+  <id>gost-proxy</id>
+  <executable>D:\local\bin\gost.exe</executable>
+  <arguments>-L :1080</arguments>
+</service>
+```
+
+* virtualbox
+
+<!-- todo -->
+
+```xml
+<service>
+  <id>virtualbox</id>
+  <env name="VBOX_USER_HOME" value="D:\local\vbox"/>
+  <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
+  <startarguments>startvm "rocky" --type headless</startarguments>
+  <prestart>
+   <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
+   <arguments>registervm D:\local\vbox\rocky\rocky.vbox</arguments>
+  </prestart>
+  <stopexecutable>>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</stopexecutable>
+  <stoparguments>controlvm "rocky" acpipowerbutton</stoparguments>
+  <prestop>
+    <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
+    <arguments>list vms</arguments>
+  </prestop>
+</service>
+```

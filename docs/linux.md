@@ -188,7 +188,7 @@ chmod u+x /root/frpc/frpc && ln -s /root/frpc/frpc /usr/local/bin/frpc
 
 ```bash
 # 显示包括子目录在内的最大文件及文件夹
-du -Sh | sort -rh | head -5
+du -Sh / | sort -rh | head -5
 
 # 显示文件夹 
 du -h | sort -rh  | head -5
@@ -273,6 +273,32 @@ docker run -d --name adguardhome \
 * [easymosdns](https://github.com/pmkol/easymosdns)
 
 参考: [利用 Mosdns 和 AdGuardHome 搭建自己的 DNS](https://www.xukecheng.tech/use-mosdns-and-adguardhome-to-build-your-own-dns)
+
+
+### systemd
+
+* [simple-online-systemd-service-generator](https://techoverflow.net/2019/03/11/simple-online-systemd-service-generator/)
+
+```
+[Unit]
+Description=example
+
+[Service]
+ExecStart=/usr/bin/nodejs
+WorkingDirectory=/root/example
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- `sudo cp example.service /etc/systemd/system`
+- `sudo systemctl enable example.service` (auto-start on boot)
+- `sudo systemctl start example.service` (start right now)
+- To view the latest logs, use `sudo journalctl -xfu example.service`
+- To view the current service status, use `sudo systemctl status example.service`
+
+
 
 ### 学习文档
 
