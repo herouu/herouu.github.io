@@ -200,18 +200,7 @@ Invoke-Expression (&starship init powershell)
 ```xml
 <service>
   <id>virtualbox</id>
-  <env name="VBOX_USER_HOME" value="D:\local\vbox"/>
-  <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
-  <startarguments>startvm "rocky" --type headless</startarguments>
-  <prestart>
-   <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
-   <arguments>registervm D:\local\vbox\rocky\rocky.vbox</arguments>
-  </prestart>
-  <stopexecutable>>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</stopexecutable>
-  <stoparguments>controlvm "rocky" acpipowerbutton</stoparguments>
-  <prestop>
-    <executable>D:\Program Files\Oracle\VirtualBox\VBoxManage.exe</executable>
-    <arguments>list vms</arguments>
-  </prestop>
+  <executable>C:\Users\mlamp\scoop\apps\virtualbox-np\current\VirtualBoxVM.exe</executable>
+  <startarguments>--startvm rockylinux --type headless</startarguments>
 </service>
 ```
