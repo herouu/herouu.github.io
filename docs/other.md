@@ -204,3 +204,7 @@ Invoke-Expression (&starship init powershell)
   <startarguments>--startvm rockylinux --type headless</startarguments>
 </service>
 ```
+
+### idea激活工具
+
+<https://herouu.github.io/idea/idea.zip>
