@@ -81,7 +81,6 @@ docker run -d --restart=always --name socks5 -p 1090:9090 -e PROXY_PORT=9090 ser
 docker run -p 1080:1080 -it -d --restart=always --name gost gogost/gost -L socks5://:1080
 ```
 
-
 ```bash
 docker run -d \
  --name=calibre-web \
@@ -143,4 +142,10 @@ services:
       - /root/docker/nginx/data:/data
       - /root/docker/nginx/letsencrypt:/etc/letsencrypt
       - /root/app:/root/app
+```
+
+* jrebel
+
+```shell
+ docker run -d -p 8081:8081 qinjiangbo/jrebel-server
 ```
