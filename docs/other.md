@@ -195,8 +195,6 @@ Invoke-Expression (&starship init powershell)
 
 * virtualbox
 
-<!-- todo -->
-
 ```xml
 <service>
   <id>virtualbox</id>
@@ -205,6 +203,12 @@ Invoke-Expression (&starship init powershell)
 </service>
 ```
 
-### idea激活工具
+### idea激活
+
+```text
+--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
+-javaagent:D:\Program Files\JetBrains\idea\active-agt-idea.jar
+```
 
 <https://herouu.github.io/idea/idea.zip>
