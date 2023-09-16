@@ -9,5 +9,6 @@
     * [jenkins](docs/jenkins.md)
     * [other](docs/other.md)
     * [node](docs/node.md)
+    * [监控](docs/监控.md)
 
 * 万花筒  
