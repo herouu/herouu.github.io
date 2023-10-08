@@ -212,3 +212,7 @@ Invoke-Expression (&starship init powershell)
 ```
 
 <https://herouu.github.io/idea/idea.zip>
+
+### navicat破解
+
+[navicat破解](../navicat/navicat-16.1.15.zip)
