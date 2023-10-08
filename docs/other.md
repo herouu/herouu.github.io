@@ -211,8 +211,8 @@ Invoke-Expression (&starship init powershell)
 -javaagent:D:\Program Files\JetBrains\idea\active-agt-idea.jar
 ```
 
-[idea](/idea/idea.zip)
+[idea](https://herouu.github.io/idea/idea.zip)
 
 ### navicat破解
 
-[navicat破解](/navicat/navicat-16.1.15.zip)
+[navicat破解](https://herouu.github.io/navicat/navicat-16.1.15.zip)
