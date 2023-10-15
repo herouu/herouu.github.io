@@ -36,6 +36,64 @@ SELECT TABLE_SCHEMA, TABLE_NAME, TABLE_ROWS FROM information_schema.TABLES ORDER
 
 参考: <https://www.lanmper.cn/>
 
+* 计算表的行平均大小
+
+```sql
+# avg_row_length 单位字节,B
+SELECT
+ table_name,
+ table_rows,
+ avg_row_length,
+ ( data_length / table_rows ) AS actual_avg_row_length 
+FROM
+ information_schema.TABLES 
+WHERE
+ table_schema = 'table_schema' 
+ORDER BY
+ table_rows DESC
+```
+
+* 计算单表的性能瓶颈数据量
+
+```text
+
+B+Tree中的叶子节点存放的是数据，而一个数据页只有16K，
+我们「假设：数据页中页目录，页头，页尾加起来总共占用1KB，剩余15KB全部用了存放数据」
+
+1.将B+tree的高度定义为N  
+2.非叶子节点的数据页存储数量为X，也就是有X个数据页的页号  
+3.叶子节点的数据页存储数据为Y  
+
+根据以上定义，B+tree存储的数据总量：
+
+「M = (X ^ (N-1)) * Y」  
+
+主键类型会影响行数，「假设主键类型为bigint类型，占8个字节，
+而在InnoDB源码中页号  （FIL_PAGE_OFFSET）被设置为4字节」。
+则此时非叶子节点能存储的数据量为:
+
+「X = 15 * 1024 / (8+4) = 1280」  
+
+假设叶子节点中存储的数据，每条的大小都为1KB，即每个数据页存储15条数据  
+
+「Y  = 15」  
+
+「三层B+tree的数据量（N=3）」  
+「M = (X ^ (N-1)) * Y  = (1280 ^ (3-1)) * 15 = 24579000条」  
+
+实际上表每条数据大小，可以根据上节【计算表的行平均大小】的sql进行统计，
+假如每条实际大小为130B  
+则：  
+
+「Y  = 15 * 1024 / 130 ≈ 118.15」
+
+「三层B+tree的数据量（N=3）」  
+
+「M = (X ^ (N-1)) * Y  = (1280 ^ (3-1)) * 118.15 = 193576960条 ≈ 1.9亿条」
+```
+
+参考： <https://cloud.tencent.com/developer/article/2123136>
+
 * 备份
 
 ```bash
@@ -48,7 +106,6 @@ mydumper -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -T table_
 ```bash
 myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d backup/xxx
 ```
-
 
 ### startRocks
 
