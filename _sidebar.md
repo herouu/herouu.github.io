@@ -10,6 +10,7 @@
     * [other](docs/other.md)
     * [node](docs/node.md)
     * [监控](docs/监控.md)
+    * [微服务](docs/微服务.md)
 
 * 万花筒  
     
