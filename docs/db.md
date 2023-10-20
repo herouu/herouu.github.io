@@ -98,7 +98,7 @@ B+Tree中的叶子节点存放的是数据，而一个数据页只有16K，
 
 [【sql】MySQL-ProxySQL中间件的使用](https://zhuanlan.zhihu.com/p/110733834)
 
-* 主从复制
+* 主从同步
 
 [Mysql主从同步的实现原理与配置实战](https://zhuanlan.zhihu.com/p/89796383)
 
