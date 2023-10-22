@@ -94,14 +94,6 @@ B+Tree中的叶子节点存放的是数据，而一个数据页只有16K，
 
 参考： <https://cloud.tencent.com/developer/article/2123136>
 
-* 读写分离
-
-[【sql】MySQL-ProxySQL中间件的使用](https://zhuanlan.zhihu.com/p/110733834)
-
-* 主从同步
-
-[Mysql主从同步的实现原理与配置实战](https://zhuanlan.zhihu.com/p/89796383)
-
 * 备份
 
 ```bash
@@ -114,6 +106,28 @@ mydumper -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -T table_
 ```bash
 myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d backup/xxx
 ```
+
+* 主从同步
+
+[Mysql主从同步的实现原理与配置实战](https://zhuanlan.zhihu.com/p/89796383)
+
+* 优化
+
+1.分区
+
+2.分库分表
+
+3.读写分离
+
+[【sql】MySQL-ProxySQL中间件的使用](https://zhuanlan.zhihu.com/p/110733834)
+
+4.冷热分离
+
+[技术分享：数据冷热分离](https://juejin.cn/post/6844903960474714125)
+
+5.分布式数据库
+
+TiDb、oceanbase
 
 ### startRocks
 
