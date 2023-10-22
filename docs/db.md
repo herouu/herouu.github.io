@@ -94,19 +94,6 @@ B+Tree中的叶子节点存放的是数据，而一个数据页只有16K，
 
 参考： <https://cloud.tencent.com/developer/article/2123136>
 
-* 备份
-
-```bash
-mydumper -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -T table_name -o backup/xxx
-
-```
-
-* 恢复
-
-```bash
-myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d backup/xxx
-```
-
 * 主从同步
 
 [Mysql主从同步的实现原理与配置实战](https://zhuanlan.zhihu.com/p/89796383)
@@ -127,7 +114,84 @@ myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d bac
 
 5.分布式数据库
 
-TiDb、oceanbase
+[TiDB](tidb.net/book)
+
+* 离线数据同步
+
+1.DataX,需提前备份表结构
+
+```json
+ 
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "column": ["*"],
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://192.168.1.130:3306/cloud-demo?useSSL=false&useUnicode=true&characterEncoding=utf8&yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true"],
+                                "table": ["sys_menu"]
+                            }
+                        ],
+                        "password": "123456",
+                        "username": "root",
+                        "where": ""
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "column": ["*"],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://192.168.1.130:3306/cloud-demo-bak?useSSL=false&useUnicode=true&characterEncoding=utf8&yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+                                "table": ["sys_menu"]
+                            }
+                        ],
+                        "password": "123456",
+                        "preSql": [],
+                        "session": [],
+                        "username": "root",
+                        "writeMode": "replace"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}
+```
+
+```python
+python bin/datax.py job/bak.json
+```
+
+2.mydumper-myloader
+
+备份
+
+```bash
+mydumper -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -T table_name -o backup/xxx
+
+```
+
+恢复
+
+```bash
+myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d backup/xxx
+```
+
+* 实时数据同步/CDC（Change Data Capture）
+
+1.Canal
+2.Flink CDC
 
 ### startRocks
 
