@@ -254,7 +254,9 @@ FROM KAFKA
 并发场景下，更新数据库，基于订阅binlog的方式,利用消息队列,更新redis缓存,可以避免缓存命中率的问题
 
 [【缓存数据一致性探究】](https://mp.weixin.qq.com/s/OWuP66WxpciBAgm2mptUxw)
+
 [【浅谈缓存最终一致性的解决方案】](https://cloud.tencent.com/developer/article/1932934)
+
 [【干货 | 携程最终一致和强一致性缓存实践】](https://mp.weixin.qq.com/s/E-chAZyHtaZOdA19mW59-Q)
 
 #### redis熔断、降级
