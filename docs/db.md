@@ -265,4 +265,6 @@ FROM KAFKA
 
 #### redis sql
 
-https://github.com/redis-field-engineering/redis-sql-trino.git
+* redis trino
+
+<https://github.com/redis-field-engineering/redis-sql-trino>
