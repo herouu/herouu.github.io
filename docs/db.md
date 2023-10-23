@@ -259,6 +259,6 @@ FROM KAFKA
 
 [【干货 | 携程最终一致和强一致性缓存实践】](https://mp.weixin.qq.com/s/E-chAZyHtaZOdA19mW59-Q)
 
-#### redis熔断、降级
+#### redis降级
 
-todo
+[【高并发系统设计（二十七）：【降级熔断】如何屏蔽非核心系统故障的影响？】](https://www.cnblogs.com/wt645631686/p/13871667.html)
