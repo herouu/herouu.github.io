@@ -35,6 +35,12 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 </mirror>
 ```
 
+* 获取依赖源码及文档
+
+```shell
+mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true
+```
+
 ### PyPI换源
 
 ```bash
