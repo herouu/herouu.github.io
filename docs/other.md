@@ -58,7 +58,7 @@ pip config set global.extra-index-url "https://mirrors.tuna.tsinghua.edu.cn/pypi
 # 加速网站
 
 https://gitmirror.com/
-https://ghproxy.com/
+https://mirror.ghproxy.com/
 https://ghps.cc/
 https://gh.ddlc.top/
 

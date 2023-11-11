@@ -262,3 +262,7 @@ FROM KAFKA
 #### redis降级
 
 [【高并发系统设计（二十七）：【降级熔断】如何屏蔽非核心系统故障的影响？】](https://www.cnblogs.com/wt645631686/p/13871667.html)
+
+#### redis sql
+
+https://github.com/redis-field-engineering/redis-sql-trino.git
