@@ -8,6 +8,48 @@
  git config -l --global
 ```
 
+### gitea maven私服
+
+* settings.xml
+
+```xml
+<servers>
+    <server>
+      <id>gitea</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Authorization</name>
+            <value>token d1f3d44a3a7f5933c90a6ccd46a8cd4cf3e796c5</value>
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+  </servers>
+
+```
+
+* pom.xml
+
+```xml
+    <repositories>
+        <repository>
+            <id>gitea</id>
+            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>gitea</id>
+            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
+        </repository>
+        <snapshotRepository>
+            <id>gitea</id>
+            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
+        </snapshotRepository>
+    </distributionManagement>
+```
+
 ### cmd代理
 
 ```bash
