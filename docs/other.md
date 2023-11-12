@@ -20,7 +20,7 @@
         <httpHeaders>
           <property>
             <name>Authorization</name>
-            <value>token d1f3d44a3a7f5933c90a6ccd46a8cd4cf3e796c5</value>
+            <value>token {access_token}</value>
           </property>
         </httpHeaders>
       </configuration>
