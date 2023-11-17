@@ -264,3 +264,9 @@ Invoke-Expression (&starship init powershell)
 ### navicat破解
 
 [navicat破解](https://herouu.github.io/navicat/navicat-16.1.15.zip)
+
+### 设计模式
+
+<https://design-patterns.readthedocs.io/zh-cn/latest/index.html>
+
+<https://refactoringguru.cn/>
