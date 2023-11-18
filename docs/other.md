@@ -6,6 +6,11 @@
  git config --global http.proxy http://127.0.0.1:10809
  git config --global --unset http.proxy
  git config -l --global
+ 
+ # git 电脑端提交失败schannel: next InitializeSecurityContext failed: Unknown error (0x80092013）
+ git config --global http.schannelCheckRevoke false
+ git config --global http.sslVerify false
+
 ```
 
 ### gitea maven私服
