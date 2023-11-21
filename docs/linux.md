@@ -256,7 +256,7 @@ https://doh.pub/dns-query
 
 #### adguardhome  
 
-```shell
+```docker
 docker run -d --name adguardhome \
     --restart unless-stopped \
     -v /my/own/workdir:/opt/adguardhome/work \

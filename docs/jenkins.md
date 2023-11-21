@@ -172,6 +172,6 @@ prepareBuildNode("${modules}").each {
 
 ### jenkins agent
 
-```shell
+```bash
  docker run -d --name dev-jenkins --user root -v /var/jenkins_home:/var/jenkins_home -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /etc/docker:/etc/docker -v /etc/localtime:/etc/localtime --init jenkins/inbound-agent -url http://192.168.0.1:10000 -workDir=/var/jenkins_home b07fab865535c605ae34d4ec4cf9dfbab791e5995298e927130ef1b8dec3ddd jenkins-node
 ```

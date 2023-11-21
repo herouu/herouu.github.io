@@ -146,17 +146,17 @@ services:
 
 * jrebel
 
-```shell
+```bash
  docker run -d -p 8081:8081 qinjiangbo/jrebel-server
 ```
 
 * nacos
 
-```shell
+```bash
 docker run --name nacos-standalone -e MODE=standalone -v /volume1/docker/nacos/conf/application.properties:/home/nacos/conf/application.properties -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:latest
 ```
 
-```text
+```properties
 #application.properties
 
 spring.datasource.platform=mysql

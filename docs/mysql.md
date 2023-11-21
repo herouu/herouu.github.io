@@ -27,6 +27,60 @@ kill trx_mysql_thread_id列
 Waiting for table metadata lock
 ```
 
+* 修改字符集
+  * 修改库字符集
+
+     ```sql
+    SELECT
+        concat( 'alter database ', schema_name, ' default character set utf8mb4 collate utf8mb4_0900_ai_ci;' )
+    FROM
+        information_schema.schemata
+    WHERE
+        schema_name IN ( 'dbName' )
+        AND lower( default_collation_name ) IN ( 'utf8mb4_unicode_ci' );
+    ```
+
+  * 修改表字符集
+
+    ```sql
+    SELECT
+        concat( 'alter table ', table_schema, '.', table_name, ' default character set utf8mb4 collate = utf8mb4_0900_ai_ci;' )
+    FROM
+        information_schema.TABLES
+    WHERE
+        table_schema IN ( 'dbName' )
+        AND table_type = 'BASE TABLE'
+        AND lower( table_collation ) IN ( 'utf8mb4_unicode_ci' );
+    ```
+
+  * 修改表中字段字符集
+
+    ```sql
+    SELECT
+        concat(
+        concat( 'alter table ', t1.table_schema, '.', t1.table_name ),
+        concat(
+        ' modify ','`',t1.column_name,'` ',
+        t1.data_type,
+        IF
+        ( t1.data_type IN ( 'varchar', 'char' ), concat( '(', t1.character_maximum_length, ')' ), '' ),
+        ' character set utf8mb4 collate utf8mb4_0900_ai_ci',
+        IF
+        ( t1.is_nullable = 'NO', ' not null', ' null' ),
+        ' comment ',
+        '''',
+        t1.column_comment,
+        ''';'
+        )) alter_sql
+    FROM
+        information_schema.COLUMNS t1
+    WHERE
+        lower( t1.collation_name ) IN ( 'utf8mb4_unicode_ci' )
+        AND t1.table_schema IN (
+        'dbName'
+        )
+    ```
+
 * 表行数排名
 
 ```sql
@@ -98,17 +152,14 @@ B+Tree中的叶子节点存放的是数据，而一个数据页只有16K，
 [Mysql主从同步的实现原理与配置实战](https://zhuanlan.zhihu.com/p/89796383)
 
 * 优化
+  * 分区
+  * 分库分表
+  * 读写分离
 
-1.分区
-
-2.分库分表
-
-3.读写分离
-
-[【sql】MySQL-ProxySQL中间件的使用](https://zhuanlan.zhihu.com/p/110733834)
+    [【sql】MySQL-ProxySQL中间件的使用](https://zhuanlan.zhihu.com/p/110733834)
 
 4.冷热分离
-
+  
 [技术分享：数据冷热分离](https://juejin.cn/post/6844903960474714125)
 
 5.分布式数据库
@@ -189,5 +240,5 @@ myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d bac
 
 * 实时数据同步/CDC（Change Data Capture）
 
-1.Canal
-2.Flink CDC
+    1. Canal
+    2. Flink CDC

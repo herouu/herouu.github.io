@@ -2,7 +2,7 @@
 
 ### git
 
-```shell
+```bash
  git config --global http.proxy http://127.0.0.1:10809
  git config --global --unset http.proxy
  git config -l --global
@@ -84,7 +84,7 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 
 * 获取依赖源码及文档
 
-```shell
+```bash
 mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true
 ```
 
@@ -205,7 +205,7 @@ docker run -d \
 
 #### window网络重置
 
-```shell
+```bash
 netsh winsock reset
 ```
 
@@ -221,7 +221,7 @@ sudo apt-get update
 
 * [starship](https://github.com/starship/starship)
 
-```shell
+```bash
 # cmd 
 scoop install clink 
 # 创建lua clink\starship.lua,文件中添加

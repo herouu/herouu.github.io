@@ -73,6 +73,14 @@
         style: 'text-align: center;',
         class: 'className',
       },
+      hideCode: {
+        scroll: false, // Enable scrolling
+        height: 40000 // Max height
+      },
+      timeUpdater: {
+        text: "<div align='right' width='200px' style='color:gray;font-size:14px'>最后更新时间:&emsp;{docsify-updated}</div>",
+        formatUpdated: "{YYYY}/{MM}/{DD} {HH}:{mm}:{ss}",
+      },
     }
   </script>
   <!-- Docsify v4 -->
@@ -85,7 +93,11 @@
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-python.min.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-yaml.min.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-docker.min.js"></script>
-
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-sql.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-json.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-log.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-markdown.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-properties.min.js"></script>
 
   <!--全文搜索-->
   <script src="https://fastly.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
@@ -114,6 +126,12 @@
 
   <!-- 页脚增强 -->
   <script src="https://fastly.jsdelivr.net/npm/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+
+  <!-- 代码折叠 -->
+  <script src="https://fastly.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>
+
+  <!-- 最后更新时间 -->
+  <script src="https://fastly.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
 </body>
 
 </html>

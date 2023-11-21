@@ -20,7 +20,7 @@
 
 ### 安装
 
-```shell
+```docker
 docker volume create kafka-data
 docker run -d --name kafka-server \
   --network host \
