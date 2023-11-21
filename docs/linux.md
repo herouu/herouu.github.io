@@ -151,7 +151,7 @@ https://ping.pe/
 * ssh:notty
 `lastb`命令,出现大量的输出说明你的服务器正在遭受黑客们的暴力破解
 
-```text
+```vim
 * 修改ssh默认端口
 * 禁止root登录
 * 使用ssh免秘钥登录
@@ -160,7 +160,7 @@ https://ping.pe/
 
 * ssh连接经常断线,开启如下配置
 
-```text
+```vim
 TCPKeepAlive yes
 ClientAliveInterval 360
 ClientAliveCountMax 10

@@ -46,7 +46,7 @@ docker load -i image.tar
 
 * docker-proxy端口占用无法重启
 
-```text
+```log
 [root@localhost ~]# ps -ef | grep docker-proxy
 root      1329   987  0 11:56 ?        00:00:00 [docker-proxy] <defunct>
 root      1333   987  0 11:56 ?        00:00:00 [docker-proxy] <defunct>

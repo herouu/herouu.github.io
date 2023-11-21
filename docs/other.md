@@ -97,7 +97,7 @@ pip config set global.extra-index-url "https://mirrors.tuna.tsinghua.edu.cn/pypi
 
 ### github加速
 
-```text
+```vim
 # hostname
 199.232.4.133 raw.githubusercontent.com
 140.82.113.4 github.com
@@ -258,7 +258,7 @@ Invoke-Expression (&starship init powershell)
 
 ### idea激活
 
-```text
+```vim
 --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
 --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
 -javaagent:D:\Program Files\JetBrains\idea\active-agt-idea.jar
