@@ -66,13 +66,6 @@
           label: "Attention"
         }
       },
-      footer: {
-        copy: '<div><span>Copyright &copy 2022-2023</span>&nbsp;&nbsp;<a href="https://beian.miit.gov.cn/" target="_blank">辽ICP备2023008082号-1</a></div><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=21021702000655" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/static/image/备案图标.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">辽公网安备 21021702000655号</p></a></div>',
-        auth: 'wiki for herouu',
-        pre: '<hr/>',
-        style: 'text-align: center;',
-        class: 'className',
-      },
       hideCode: {
         scroll: false, // Enable scrolling
         height: 40000 // Max height
@@ -81,6 +74,14 @@
         text: "<div align='right' width='200px' style='color:gray;font-size:14px'>最后更新时间:&emsp;{docsify-updated}</div>",
         formatUpdated: "{YYYY}/{MM}/{DD} {HH}:{mm}:{ss}",
       },
+      beian: {
+        ICP: "辽ICP备2023008082号-1",
+        NISMSP: {
+            number: "辽公网安备 21021702000655号",
+            url: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=21021702000655",
+            id: ""
+        },
+    },
     }
   </script>
   <!-- Docsify v4 -->
@@ -98,6 +99,7 @@
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-log.min.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-markdown.min.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-properties.min.js"></script>
+  <script src="https://fastly.jsdelivr.net/npm/prismjs@latest/components/prism-groovy.min.js"></script>
 
   <!--全文搜索-->
   <script src="https://fastly.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
@@ -124,14 +126,16 @@
   <script
     src="https://fastly.jsdelivr.net/npm/docsify-plugin-flexible-alerts/dist/docsify-plugin-flexible-alerts.min.js"></script>
 
-  <!-- 页脚增强 -->
-  <script src="https://fastly.jsdelivr.net/npm/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
-
   <!-- 代码折叠 -->
   <script src="https://fastly.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>
 
   <!-- 最后更新时间 -->
   <script src="https://fastly.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
+  
+  <!-- 备案 -->
+  <script src="https://fastly.jsdelivr.net/npm/docsify-beian@latest/dist/beian.min.js"></script>
+
+
 </body>
 
 </html>
