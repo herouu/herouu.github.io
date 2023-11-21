@@ -29,3 +29,9 @@ docker run -d --name kafka-server \
   --env KAFKA_BROKER_LISTENER_PORT=29092 \
   docker.nju.edu.cn/sir5kong/kafka
 ```
+
+### 延迟消息
+
+* 时间轮和delay-file实现
+
+<https://gitee.com/venus-suite/rocketmq-with-delivery-time/wikis/2.%E6%97%B6%E9%97%B4%E8%BD%AE%E5%92%8Cdelay-file%E5%AE%9E%E7%8E%B0>

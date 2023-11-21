@@ -1,17 +1,20 @@
-
-* wiki
-
-    * [linux](docs/linux.md)
-    * [docker](docs/docker.md)
-    * [rancher](docs/rancher.md)    
-    * [database](docs/db.md)
-    * [kafka](docs/kafka.md)
-    * [jenkins](docs/jenkins.md)
-    * [other](docs/other.md)
-    * [node](docs/node.md)
-    * [监控](docs/监控.md)
-    * [微服务](docs/微服务.md)
-
-* 万花筒  
-    
-    * [c/c++](docs/杂/c_c++.md)
+* 微服务
+  * [spring cloud](docs/微服务.md)
+* 数据库
+  * [mysql](docs/mysql.md)
+  * [starrocks](docs/starrocks.md)
+* 中间件
+  * [kafka](docs/kafka.md)
+  * [redis](docs/redis.md)
+  * [zookeeper](docs/zookeeper.md)
+* 运维
+  * [jenkins](docs/jenkins.md)
+  * [docker](docs/docker.md)
+  * [rancher](docs/rancher.md)
+  * [linux](docs/linux.md)
+  * [监控](docs/监控.md)
+* 前端
+  * [node](docs/node.md)  
+* 其他  
+  * [other](docs/other.md)
+  * [c/c++](docs/杂/c_c++.md)
