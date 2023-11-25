@@ -111,6 +111,16 @@ https://gh.ddlc.top/
 
 ```
 
+### github下载子文件夹工具
+
+* 浏览器插件 GitZip for github
+
+* 网页工具 DownGit
+
+<https://minhaskamal.github.io/DownGit/#/home>
+
+<https://blog.luckly-mjw.cn/tool-show/github-directory-downloader/index.html>
+
 ## 其他工具
 
 ### 文档
