@@ -11,6 +11,8 @@
  git config --global http.schannelCheckRevoke false
  git config --global http.sslVerify false
 
+# ERROR: failed to receive handshake, SSL/TLS connection failed
+git config --global http.sslBackend schannel
 ```
 
 ### gitea maven私服
