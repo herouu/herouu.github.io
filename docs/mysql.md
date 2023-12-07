@@ -27,6 +27,101 @@ kill trx_mysql_thread_id列
 Waiting for table metadata lock
 ```
 
+* 数据库问题排查
+
+```sql
+-- 查看锁等待时间
+show variables like 'innodb_lock_wait_timeout';  
+-- 设置锁等待时间
+set innodb_lock_wait_timeout=600;
+set global innodb_lock_wait_timeout=600;
+注意global的修改对当前线程是不生效的，只有建立新的连接才生效
+```
+
+```sql
+-- 模拟 
+-- 事务1
+begin;
+update tt set name='步骤一' where id = 1;
+
+-- 事务2
+begin;
+select * from tt where id = 1;
+```
+
+```sql
+排查问题核心表
+
+-- 事务表
+select * from information_schema.innodb_trx;
+-- 锁等待表
+select * from sys.innodb_lock_waits;
+
+-- PROCESSLIST_ID与mysql thread_id关系表
+select * from performance_schema.threads;
+
+-- mysql8锁信息表
+select * from performance_schema.data_locks;
+
+-- 历史语句事件表
+select * from performance_schema.events_statements_history;
+select * from performance_schema.events_statements_current;
+
+```
+
+```sql
+-- 长事务造成的Lock wait timeout exceeded
+SELECT
+ dl.*,
+ trx.trx_query,
+ ilw.blocking_pid,
+ ilw.sql_kill_blocking_connection,
+ t2.THREAD_ID block_thread_id 
+FROM
+ `performance_schema`.`data_locks` dl
+ INNER JOIN `performance_schema`.`threads` t ON t.thread_id = dl.thread_id
+ LEFT JOIN `information_schema`.`innodb_trx` trx ON t.processlist_id = trx.trx_mysql_thread_id
+ LEFT JOIN `sys`.`innodb_lock_waits` ilw ON ilw.waiting_pid = t.processlist_id
+ LEFT JOIN `performance_schema`.`threads` t2 ON t2.processlist_id = ilw.blocking_pid 
+WHERE
+ trx.trx_state = 'LOCK WAIT' 
+ AND dl.object_schema = 'schema_name' 
+ORDER BY
+ t.processlist_time DESC;
+
+-- 查询长事务sql 
+select * from performance_schema.events_statements_history where thread_id = #{block_thread_id};
+
+```
+
+```sql
+-- 在另外一个会话（连接）里面，查询这个超过10秒未提交事务的详细信息：
+
+SELECT
+ t.trx_mysql_thread_id,
+ t.trx_state,
+ t.trx_tables_in_use,
+ t.trx_tables_locked,
+ t.trx_query,
+ t.trx_rows_locked,
+ t.trx_rows_modified,
+ t.trx_lock_structs,
+ t.trx_started,
+ t.trx_isolation_level,
+ p.TIME,
+ p.USER,
+ p.HOST,
+ p.db,
+ p.command
+FROM
+ information_schema.innodb_trx t
+ INNER JOIN information_schema.PROCESSLIST p ON t.trx_mysql_thread_id = p.id
+WHERE
+ t.trx_state = 'RUNNING'
+ AND p.TIME > 10
+ AND p.command = 'Sleep';
+```
+
 * 修改字符集
   * 修改库字符集
 
