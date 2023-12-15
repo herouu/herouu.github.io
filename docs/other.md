@@ -153,24 +153,10 @@ iwr -useb get.scoop.sh | iex
 ```
 
 ```bash
-# install
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-$env:SCOOP='D:\Applications\Scoop'
-[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
-# irm -useb get.scoop.sh | iex
-irm https://ghproxy.com/raw.githubusercontent.com/lzwme/scoop-proxy-cn/master/install.ps1 | iex
+# 国内使用scoop
+https://gitee.com/glsnames/scoop-installer
+https://github.com/lzwme/scoop-proxy-cn
 
-# config
-scoop config SCOOP_REPO https://ghproxy.com/github.com/ScoopInstaller/Scoop
-scoop bucket rm main
-scoop bucket add main https://ghproxy.com/github.com/ScoopInstaller/Main
-scoop bucket add spc https://ghproxy.com/https://github.com/lzwme/scoop-proxy-cn
-
-# show help
-scoop help
-
-# install 7zip、aria2、scoop-search...
-scoop install spc/7zip spc/aria2 spc/scoop-search
 ```
 
 #### bucket自定义
