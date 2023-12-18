@@ -275,5 +275,3 @@ Invoke-Expression (&starship init powershell)
 <https://refactoringguru.cn/>
 
 ### vagrant
-
-todo
