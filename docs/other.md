@@ -273,3 +273,5 @@ Invoke-Expression (&starship init powershell)
 <https://design-patterns.readthedocs.io/zh-cn/latest/index.html>
 
 <https://refactoringguru.cn/>
+
+### vagrant
