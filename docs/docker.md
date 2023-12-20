@@ -150,20 +150,3 @@ services:
  docker run -d -p 8081:8081 qinjiangbo/jrebel-server
 ```
 
-* nacos
-
-```bash
-docker run --name nacos-standalone -e MODE=standalone -v /volume1/docker/nacos/conf/application.properties:/home/nacos/conf/application.properties -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:latest
-```
-
-```properties
-#application.properties
-
-spring.datasource.platform=mysql
-
-db.num=1
-db.url.0=jdbc:mysql://172.17.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
-db.user=root
-db.password=123456
-
-```
