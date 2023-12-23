@@ -1,5 +1,6 @@
 * 微服务
   * [spring cloud](docs/微服务.md)
+  * [可观测](docs/可观测.md)
 * 数据库
   * [mysql](docs/mysql.md)
   * [starrocks](docs/starrocks.md)
@@ -12,7 +13,7 @@
   * [docker](docs/docker.md)
   * [rancher](docs/rancher.md)
   * [linux](docs/linux.md)
-  * [监控](docs/监控.md)
+
 * 前端
   * [node](docs/node.md)  
 * 其他  
