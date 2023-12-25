@@ -20,8 +20,10 @@ tcp/ip 5层协议
 
 ![icmp_wireshark](../static/image/tcp_ip/icmp_wireshark.png)
 
-wireshark报文内容与icmp报文格式一一对应
+wireshark报文内容与ICMP报文格式一一对应
 
 参考: <https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol>
 
-### 协议逆向分析 todo
+### 协议逆向分析
+
+todo
