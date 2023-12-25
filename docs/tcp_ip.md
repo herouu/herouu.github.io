@@ -12,7 +12,7 @@ tcp/ip 5层协议
 
 ### ping命令抓包分析
 
-* icmp报文格式
+* ICMP报文格式
 
 ![icmp_报文格式](../static/image/tcp_ip/icmp_报文格式.png)
 
