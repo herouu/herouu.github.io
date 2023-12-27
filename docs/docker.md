@@ -64,6 +64,8 @@ systemctl restart docker
 ```bash
 docker volume create portainer_data
 docker run -d -p 8100:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.17.1
+
+https://mirror.ghproxy.com/https://raw.githubusercontent.com/portainer/templates/master/templates-2.0.json
 ```
 
 * v2rayA(<https://v2raya.org/>)
