@@ -337,3 +337,9 @@ myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d bac
 
     1. Canal
     2. Flink CDC
+
+* 运维工具
+
+<https://github.com/hcymysql>
+
+mysqlstat 工具挺好使
