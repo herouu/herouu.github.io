@@ -69,7 +69,11 @@ cdn.jsdelivr.net替代
 
 * fastly.jsdelivr.net
 
-
 ### vuepress
 
 * <https://theme-hope.vuejs.press/>
+
+### 可视化大屏
+
+* [superset](https://superset.apache.org/)
+* kibina

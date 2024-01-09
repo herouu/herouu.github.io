@@ -15,48 +15,6 @@
 git config --global http.sslBackend schannel
 ```
 
-### gitea maven私服
-
-* settings.xml
-
-```xml
-<servers>
-    <server>
-      <id>gitea</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>Authorization</name>
-            <value>token {access_token}</value>
-          </property>
-        </httpHeaders>
-      </configuration>
-    </server>
-  </servers>
-
-```
-
-* pom.xml
-
-```xml
-    <repositories>
-        <repository>
-            <id>gitea</id>
-            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
-        <repository>
-            <id>gitea</id>
-            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
-        </repository>
-        <snapshotRepository>
-            <id>gitea</id>
-            <url>https://home.herouu.top/git/api/packages/herouu/maven</url>
-        </snapshotRepository>
-    </distributionManagement>
-```
-
 ### cmd代理
 
 ```bash
@@ -72,23 +30,6 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 ```
 
 ## 常用镜像源
-
-### maven
-
-```xml
-<mirror>
-    <id>aliyunmaven</id>
-    <mirrorOf>*</mirrorOf>
-    <name>阿里云公共仓库</name>
-    <url>https://maven.aliyun.com/repository/public</url>
-</mirror>
-```
-
-* 获取依赖源码及文档
-
-```bash
-mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true
-```
 
 ### PyPI换源
 
@@ -276,17 +217,8 @@ Invoke-Expression (&starship init powershell)
 
 ### vagrant
 
-### k6
-
-### iperf 网络质量测试
-
 ### 绘图
 
 * kroki.io
 * draw.io
-
-### benchmark工具
-
-* [wrk](https://github.com/wg/wrk)
-* [Bombardier](https://github.com/codesenberg/bombardier)
-* jmh
+* excalidraw 草图
