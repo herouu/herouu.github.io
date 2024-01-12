@@ -109,12 +109,6 @@ systemctl enable ntpd
 hostnamectl set-hostname 主机名
 ```
 
-### multipass
-
-```bash
-multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
-```
-
 ### centos7升级rockylinux8
 
 参考 <https://blog.csdn.net/qq_44379042/article/details/130981771>
@@ -241,18 +235,17 @@ cat /proc/cpuinfo | grep "cpu MHz*"
 #### 公共DNS
 
 >[!NOTE|label:阿里]
-> 223.5.5.5 223.6.6.6 
+> 223.5.5.5 223.6.6.6
 >
 > * 阿里DoH  
-https://dns.alidns.com/dns-query  
+<https://dns.alidns.com/dns-query>  
 https://alidns_ip/dns-query
-
 
 >[!NOTE|label:腾讯]
 >119.29.29.29 182.254.116.116
 >
 > * 腾讯DoH  
-https://doh.pub/dns-query
+<https://doh.pub/dns-query>
 
 #### adguardhome  
 
@@ -274,7 +267,6 @@ docker run -d --name adguardhome \
 
 参考: [利用 Mosdns 和 AdGuardHome 搭建自己的 DNS](https://www.xukecheng.tech/use-mosdns-and-adguardhome-to-build-your-own-dns)
 
-
 ### systemd
 
 * [simple-online-systemd-service-generator](https://techoverflow.net/2019/03/11/simple-online-systemd-service-generator/)
@@ -292,14 +284,43 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-- `sudo cp example.service /etc/systemd/system`
-- `sudo systemctl enable example.service` (auto-start on boot)
-- `sudo systemctl start example.service` (start right now)
-- To view the latest logs, use `sudo journalctl -xfu example.service`
-- To view the current service status, use `sudo systemctl status example.service`
-
-
+* `sudo cp example.service /etc/systemd/system`
+* `sudo systemctl enable example.service` (auto-start on boot)
+* `sudo systemctl start example.service` (start right now)
+* To view the latest logs, use `sudo journalctl -xfu example.service`
+* To view the current service status, use `sudo systemctl status example.service`
 
 ### 学习文档
 
 [Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
+
+### multipass
+
+```bash
+multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
+```
+
+* 修改静态ip
+
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+```yaml
+network:
+    ethernets:
+        eth0:
+            dhcp4: no
+            addresses: [172.25.192.10/24]
+            optional: true
+            routes:
+              - to: default
+                via: 172.25.192.1
+            nameservers:
+                addresses: [223.5.5.5,223.6.6.6]
+            match:
+                macaddress: 52:54:00:2b:52:ee
+            set-name: eth0
+    version: 2
+```
+
+修改静态ip后,multipass shell连接不上,是host映射匹配不上，修改C:\Windows\System32\drivers\etc\hosts.ics文件中的ip映射关系，如
+`172.25.192.10 vm01.mshome.net`
