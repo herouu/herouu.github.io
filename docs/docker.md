@@ -19,8 +19,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
-        "https://mirror.ccs.tencentyun.com",
-        "https://docker.nju.edu.cn"
+        "https://docker.mirrors.sjtug.sjtu.edu.cn"
     ]
 }
 EOF
