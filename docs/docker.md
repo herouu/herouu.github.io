@@ -43,6 +43,26 @@ scp image.tar root@192.168.0.xxx:image.tar
 docker load -i image.tar  
 ```
 
+* 宿主机、容器cp
+
+将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。
+
+```bash
+docker cp /www/runoob 96f7f14e99ab:/www/
+```
+
+将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。
+
+```bash
+docker cp /www/runoob 96f7f14e99ab:/www
+```
+
+将容器96f7f14e99ab的/www目录拷贝到主机的/tmp目录中。
+
+```bash
+docker cp  96f7f14e99ab:/www /tmp/
+```
+
 * docker-proxy端口占用无法重启
 
 ```log

@@ -132,3 +132,17 @@ mvn clean deploy -Pgitea
 ```
 
 ### 插件
+
+#### maven-shade-plugin
+
+* maven-shade-plugin主要用于创建一个包含所有依赖项的可执行JAR文件。
+* 它会将项目的编译输出与所有依赖项合并到一个JAR文件中，并对冲突的类和资源进行重定向和重命名，以避免命名冲突问题。
+* 这个插件通常用于创建独立的可执行JAR文件，可以直接通过java -jar命令运行。
+
+#### maven-assembly-plugin
+
+* maven-assembly-plugin主要用于创建自定义的分发包或归档文件。
+* 它可以根据用户定义的描述文件，将项目的源代码、资源文件、配置文件等打包成ZIP、TAR.GZ等格式的归档文件。
+* 这个插件通常用于创建发布版本、分发包或者用于部署的压缩文件。
+
+总结：maven-shade-plugin和maven-assembly-plugin在功能上有一些重叠，都可以用于构建可执行的Java应用程序。然而，maven-shade-plugin更关注于创建可执行JAR文件，而maven-assembly-plugin则更适合创建自定义的分发包或归档文件。选择使用哪个插件取决于你的具体需求和项目的特点。
