@@ -146,3 +146,34 @@ mvn clean deploy -Pgitea
 * 这个插件通常用于创建发布版本、分发包或者用于部署的压缩文件。
 
 总结：maven-shade-plugin和maven-assembly-plugin在功能上有一些重叠，都可以用于构建可执行的Java应用程序。然而，maven-shade-plugin更关注于创建可执行JAR文件，而maven-assembly-plugin则更适合创建自定义的分发包或归档文件。选择使用哪个插件取决于你的具体需求和项目的特点。
+
+#### exec-maven-plugin
+
+exec-maven-plugin是Maven构建工具的一个插件，它允许在Maven构建过程中执行外部命令或脚本。这个插件可以非常方便地用于在构建过程中执行一些定制化的任务，例如运行外部命令、脚本或者调用系统工具。
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <id>execute-my-script</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+                        <executable>sh</executable>
+                        <arguments>
+                            <argument>my-script.sh</argument>
+                        </arguments>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
