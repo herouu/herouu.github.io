@@ -63,6 +63,12 @@ docker cp /www/runoob 96f7f14e99ab:/www
 docker cp  96f7f14e99ab:/www /tmp/
 ```
 
+* docker build
+
+```bash
+docker build --build-arg="APP_FILE=jrebel-server.upx" -f Dockerfile -t jrebel-server:latest .
+```
+
 * docker-proxy端口占用无法重启
 
 ```log

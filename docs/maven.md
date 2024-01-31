@@ -177,3 +177,56 @@ exec-maven-plugin是Maven构建工具的一个插件，它允许在Maven构建�
     </plugins>
 </build>
 ```
+
+#### native-maven-plugin
+
+``` xml
+    <profiles>
+        <profile>
+            <id>native</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                        <version>${native.maven.plugin.version}</version>
+                        <extensions>true</extensions>
+                        <executions>
+                            <execution>
+                                <id>build-native</id>
+                                <goals>
+                                    <goal>compile-no-fork</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <skip>false</skip>
+                            <imageName>${imageName}</imageName>
+                            <fallback>false</fallback>
+                            <sharedLibrary>true</sharedLibrary>
+                            <useArgFile>false</useArgFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+```
+
+* 参考文档
+
+<https://graalvm.github.io/native-build-tools/latest/maven-plugin.html>
+
+* 反射配置辅助生成
+
+```bash
+java -agentlib:native-image-agent=config-output-dir=reflection-config.json -jar example.jar
+
+```
+
+* native可执行文件压缩
+
+```bash
+upx -o 新文件名 原始文件名
+```
