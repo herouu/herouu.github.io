@@ -23,6 +23,13 @@
 
 ```
 
+* 反射配置辅助生成
+
+```bash
+java -agentlib:native-image-agent=config-output-dir=reflection-config.json -jar example.jar
+
+```
+
 * native可执行文件压缩
 
 ```bash
