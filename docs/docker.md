@@ -29,10 +29,19 @@ sudo systemctl restart docker
 
 参考: <https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6>
 
+* 删除停止的容器
+
+```bash
+docker container prune
+```
+
 * 清空null镜像
 
 ```bash
 docker image prune -f
+
+docker rmi $(docker images -f "dangling=true" -q)
+
 ```
 
 * 跨主机传递image
@@ -67,6 +76,20 @@ docker cp  96f7f14e99ab:/www /tmp/
 
 ```bash
 docker build --build-arg="APP_FILE=jrebel-server.upx" -f Dockerfile -t jrebel-server:latest .
+```
+
+* docker stats
+
+```bash
+docker stats --no-stream happy_rhodes wizardly_tu
+```
+
+* docker images
+
+```bash
+
+# 正则匹配
+docker images --filter=reference='*/jrebel*'
 ```
 
 * docker-proxy端口占用无法重启
