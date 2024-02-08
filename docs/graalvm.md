@@ -16,8 +16,6 @@ mvn -N wrapper:wrapper
 
 <https://www.graalvm.org/latest/reference-manual/native-image/guides/containerise-native-executable-and-run-in-docker-container/>
 
-docker build -f Dockerfile.jvm -t sb-native-test:1.0.0-docker .
-
 ### 多阶段native构建
 
 #### glibc
@@ -26,35 +24,6 @@ docker build -f Dockerfile.jvm -t sb-native-test:1.0.0-docker .
 
 ```docker
 FROM ghcr.io/graalvm/native-image-community:21 AS builder
-# Set the working directory to /home/app
-WORKDIR /build
-
-# Copy the source code into the image for building
-COPY . /build
-
-# Build
-RUN ./mvnw native:compile-no-fork -Pnative
-
-# The deployment Image
-FROM jeanblanchard/alpine-glibc:3.19.0_2.35-r1
-
-EXPOSE 8080
-
-# Copy the native executable into the containers
-COPY --from=builder /build/target/sb-native-test app
-ENTRYPOINT ["/app"]
-```
-
-```bash
-docker build --cpuset-cpus=4 -f Dockerfile_musl -t sb-native-test:1.0.0-musl .
-```
-
-#### musl
-
-* Dockerfile_musl
-
-```docker
-FROM ghcr.io/graalvm/native-image-community:21-muslib AS builder
 # Set the working directory to /home/app
 WORKDIR /build
 
@@ -78,6 +47,35 @@ ENTRYPOINT ["/app"]
 docker build --cpuset-cpus=4 -f Dockerfile_glibc -t sb-native-test:1.0.0-glibc .
 ```
 
+#### musl
+
+* Dockerfile_musl
+
+```docker
+FROM ghcr.io/graalvm/native-image-community:21-muslib AS builder
+# Set the working directory to /home/app
+WORKDIR /build
+
+# Copy the source code into the image for building
+COPY . /build
+
+# Build
+RUN ./mvnw native:compile-no-fork -Pnative
+
+# The deployment Image
+FROM alpine:3.19.0
+
+EXPOSE 8080
+
+# Copy the native executable into the containers
+COPY --from=builder /build/target/sb-native-test app
+ENTRYPOINT ["/app"]
+```
+
+```bash
+docker build --cpuset-cpus=4 -f Dockerfile_musl -t sb-native-test:1.0.0-musl .
+```
+
 * 构建时内存、cpu限制
 
 <https://www.graalvm.org/latest/reference-manual/native-image/overview/BuildConfiguration/>
@@ -85,7 +83,8 @@ docker build --cpuset-cpus=4 -f Dockerfile_glibc -t sb-native-test:1.0.0-glibc .
 ### 基础镜像
 
 * bellsoft/alpaquita-linux-base:stream-glibc
-* jeanblanchard/alpine-glibc
+* jeanblanchard/alpine-glibc:3.19.0
+* alpine:3.19.0
 
 ### small image
 

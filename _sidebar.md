@@ -3,6 +3,7 @@
   * [微服务](docs/微服务.md)
   * [可观测](docs/可观测.md)
   * [springboot](docs/springboot.md)
+  * [graalvm](docs/graalvm.md)
   * [TCP/IP](docs/tcp_ip.md)
 * 数据库
   * [mysql](docs/mysql.md)
