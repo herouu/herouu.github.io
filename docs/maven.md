@@ -230,3 +230,36 @@ java -agentlib:native-image-agent=config-output-dir=reflection-config.json -jar 
 ```bash
 upx -o 新文件名 原始文件名
 ```
+
+#### docker-maven-plugin
+
+参考文档：<https://dmp.fabric8.io/>
+
+```xml
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.43.4</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>${project.name}:1.0.0-musl</name>
+                            <build>
+                                <dockerFile>${project.basedir}/Dockerfile_musl</dockerFile>
+                                <args>
+                                    <APP_FILE>${project.artifactId}</APP_FILE>
+                                </args>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+```
