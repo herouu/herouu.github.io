@@ -1,3 +1,5 @@
+* [rust](https://rustwiki.org/zh-CN/book/)
+* [go](https://golang-china.github.io/gopl-zh/)
 * java
   * [jdk特性](docs/jdk.md)
   * [微服务](docs/微服务.md)
@@ -25,4 +27,3 @@
   * [maven](docs/maven.md)
   * [benchmark](docs/benchmark.md)
   * [other](docs/other.md)
-  * [c/c++](docs/杂/c_c++.md)
