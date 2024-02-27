@@ -77,3 +77,10 @@ cdn.jsdelivr.net替代
 
 * [superset](https://superset.apache.org/)
 * kibina
+
+### charts库
+
+* billboard
+* apexcharts
+* G2
+* echarts

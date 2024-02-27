@@ -35,3 +35,8 @@
 * 带虚拟节点的一致性hash
 
 参考：<https://cloud.tencent.com/developer/article/1095164>
+
+#### redis docker集群
+
+<https://zhuanlan.zhihu.com/p/216211089>
+<https://www.yoyoask.com/?p=6051>
