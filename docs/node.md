@@ -20,7 +20,8 @@ eval "$(fnm env --use-on-cd)"
 
 ```bash
 npm config set registry https://registry.npmmirror.com
-npm config get registry
+npm config set cache "D:\\.node\\npm_cache"
+npm config get registry cache
 ```
 
 ### pm2
@@ -68,6 +69,18 @@ better_sqlite3_binary_host_mirror=https://registry.npmmirror.com/-/binary/better
 cdn.jsdelivr.net替代
 
 * fastly.jsdelivr.net
+
+### docsify
+
+```bash
+#Quick start
+npm i docsify-cli -g
+# Initialize
+docsify init ./docs
+# Preview your site
+docsify serve docs
+
+```
 
 ### vuepress
 

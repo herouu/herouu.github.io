@@ -1,10 +1,12 @@
 * [rust](https://rustwiki.org/zh-CN/book/)
 * [go](https://golang-china.github.io/gopl-zh/)
 * java
-  * [jdk特性](docs/jdk.md)
+
+[//]: # (  * [jdk特性]&#40;docs/jdk.md&#41;)
   * [微服务](docs/微服务.md)
   * [可观测](docs/可观测.md)
-  * [springboot](docs/springboot.md)
+
+[//]: # (  * [springboot]&#40;docs/springboot.md&#41;)
   * [graalvm](docs/graalvm.md)
   * [TCP/IP](docs/tcp_ip.md)
   * [openjdk编译](docs/openjdk/openjdk_index.md)
@@ -14,7 +16,8 @@
 * 中间件
   * [kafka](docs/kafka.md)
   * [redis](docs/redis.md)
-  * [zookeeper](docs/zookeeper.md)
+
+[//]: # (  * [zookeeper]&#40;docs/zookeeper.md&#41;)
 * 运维
   * [jenkins](docs/jenkins.md)
   * [docker](docs/docker.md)

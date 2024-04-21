@@ -1,4 +1,37 @@
-## window
+## window <!-- {docsify-ignore-all} -->
+
+### wsl2
+
+#### .wslconfig
+
+```text
+[wsl2]
+swapfile=D:\\temp\\wsl-swap.vhdx
+networkingMode=mirrored
+[experimental]
+
+```
+
+#### 迁移至D盘
+
+```bash
+
+1. 停止正在运行的wsl
+wsl --shutdown
+
+2. 先查看所有WSL
+wsl -l --all  -v
+
+3. 其次导出到D盘
+wsl --export Ubuntu d:\ubuntu22.tar
+
+4. 导出完成之后，将原有的Linux注销。
+wsl --unregister Ubuntu
+
+5. 然后将导出的文件放到需要保存的地方，进行导入即可
+wsl --import Ubuntu d:\wsl2\ubuntu d:\ubuntu22.tar --version 2
+```
+
 
 ### git
 
@@ -85,17 +118,15 @@ https://gh.ddlc.top/
 ```bash
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
-$env:SCOOP='D:\Applications\Scoop'
+$env:SCOOP='D:\app\scoop'
 [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
 
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-# or shorter
-iwr -useb get.scoop.sh | iex
+irm https://herouu.github.io/shell/scoop/install.ps1 | iex
 ```
 
 ```bash
 # 国内使用scoop
-https://gitee.com/glsnames/scoop-installer
+https://github.com/duzyn/scoop-cn
 https://github.com/lzwme/scoop-proxy-cn
 
 ```
@@ -121,24 +152,27 @@ docker run -d \
 
 * 配置tailscale -> Access Controls
 
-```json
- "derpMap": {
-  "OmitDefaultRegions": false,
-  "Regions": {
-   "901": {
-    "RegionID":   901,
-    "RegionCode": "myderp",
-    "RegionName": "myderp",
-    "Nodes": [{
-     "Name":             "myderp",
-     "RegionID":         901,
-     "HostName":         "frp.top",
-     "DERPPort":         6083,
-     "InsecureForTests": true,
-    }],
-   },
-  },
- }
+```text
+
+  "derpMap": {
+    "OmitDefaultRegions": false,
+    "Regions": {
+      "901": {
+        "RegionID": 901,
+        "RegionCode": "myderp",
+        "RegionName": "myderp",
+        "Nodes": [
+          {
+            "Name": "myderp",
+            "RegionID": 901,
+            "HostName": "frp.top",
+            "DERPPort": 6083,
+            "InsecureForTests": true
+          }
+        ]
+      }
+    }
+  }
 
 ```
 
