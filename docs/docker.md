@@ -10,6 +10,8 @@ bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
 
 ```bash
 sudo usermod -a -G docker $USER
+
+sudo chmod a+rw /var/run/docker.sock
 ```
 
 * docker添加国内镜像
