@@ -1,3 +1,9 @@
+* mysql安装
+
+```bash
+docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:latest
+```
+
 
 * 按客户端IP分组,看哪个客户端的链接数最多
 
