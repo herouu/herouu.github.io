@@ -1,7 +1,13 @@
 * mysql安装
 
 ```bash
-docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:latest
+docker run -itd --restart=always -p 3306:3306 \
+--name mysql \
+-v /home/herouu/dev/mysql/conf:/etc/mysql/conf \
+-v /home/herouu/dev/mysql/data:/var/lib/mysql \
+-v /home/herouu/dev/mysql/logs:/logs \
+-e MYSQL_ROOT_PASSWORD=123456 \
+mysql:latest
 ```
 
 
