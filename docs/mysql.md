@@ -102,18 +102,13 @@ order by client_num desc;
 * processlist
 
 ```sql
-#
-查看正在执行的线程
-，并按 Time 倒排序
+--查看正在执行的线程，并按 Time 倒排序
 select *
 from information_schema.processlist
 where Command != 'Sleep'
 order by time desc;
 
-#
-找出所有执行时间超过 5 分钟的线程
-，拼凑出 kill 语句
-，方便后面查杀
+--找出所有执行时间超过 5 分钟的线程，拼凑出 kill 语句，方便后面查杀
 select concat('kill ', id, ';')
 from information_schema.processlist
 where Command != 'Sleep' and Time > 300
@@ -144,11 +139,9 @@ variables like 'innodb_lock_wait_timeout';
 -- 设置锁等待时间
 set
 innodb_lock_wait_timeout=600;
+--注意global的修改对当前线程是不生效的，只有建立新的连接才生效
 set
 global innodb_lock_wait_timeout=600;
-注意global的修改对当前线程是不生效的
-，
-只有建立新的连接才生效
 ```
 
 ```sql
@@ -167,7 +160,7 @@ where id = 1;
 ```
 
 ```sql
-排查问题核心表
+--排查问题核心表
 
 -- 事务表
 select *
@@ -307,8 +300,7 @@ ORDER BY TABLE_ROWS DESC LIMIT 100;
 * 计算表的行平均大小
 
 ```sql
-#
-avg_row_length 单位字节,B
+--avg_row_length 单位字节,B
 SELECT table_name,
        table_rows,
        avg_row_length,
