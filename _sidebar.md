@@ -1,5 +1,11 @@
-* [rust](https://rustwiki.org/zh-CN/book/)
-* [go](https://golang-china.github.io/gopl-zh/)
+* 学习
+  * [Rust 程序设计语言](https://rustwiki.org/zh-CN/book/)
+  * [Go语言圣经](https://golang-china.github.io/gopl-zh/)
+  * [V语言学习笔记](https://lydiandylin.gitbook.io/vlang)
+  * [深入架构原理与实践](https://www.thebyte.com.cn/)
+
+* [github榜单](docs/project.md)
+
 * java
 
 [//]: # (  * [jdk特性]&#40;docs/jdk.md&#41;)
@@ -26,7 +32,8 @@
 * 前端
   * [node](docs/node.md)
 * gist
-  * [IterDBUtil](docs/gist/iterdb.md)  
+  * [IterDBUtil](docs/gist/iterdb.md)
+
 * 其他
   * [maven](docs/maven.md)
   * [benchmark](docs/benchmark.md)
