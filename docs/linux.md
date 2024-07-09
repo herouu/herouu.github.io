@@ -328,9 +328,9 @@ network:
 
 ### 命令行代理
 
-* [proxychains](https://github.com/rofl0r/proxychains-ng)]
-* [graftcp](https://github.com/hmgle/graftcp.git]
-  原理：https://raw.githubusercontent.com/hmgle/graftcp/master/README.zh-CN.md
-  根据该原理的golang实现：https://github.com/mzz2017/gg.git
+* [proxychains](https://github.com/rofl0r/proxychains-ng)
+* [graftcp](https://github.com/hmgle/graftcp.git)
+  - 原理：https://raw.githubusercontent.com/hmgle/graftcp/master/README.zh-CN.md
+  - 根据该原理的golang实现：https://github.com/mzz2017/gg.git
 * [nsproxy](https://github.com/nlzy/nsproxy.git)
-  原理：https://github.com/nlzy/nsproxy/blob/master/README
+  - 原理：https://github.com/nlzy/nsproxy/blob/master/README
