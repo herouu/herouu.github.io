@@ -324,3 +324,13 @@ network:
 
 修改静态ip后,multipass shell连接不上,是host映射匹配不上，修改C:\Windows\System32\drivers\etc\hosts.ics文件中的ip映射关系，如
 `172.25.192.10 vm01.mshome.net`
+
+
+### 命令行代理
+
+* [proxychains](https://github.com/rofl0r/proxychains-ng)]
+* [graftcp](https://github.com/hmgle/graftcp.git]
+  原理：https://raw.githubusercontent.com/hmgle/graftcp/master/README.zh-CN.md
+  根据该原理的golang实现：https://github.com/mzz2017/gg.git
+* [nsproxy](https://github.com/nlzy/nsproxy.git)
+  原理：https://github.com/nlzy/nsproxy/blob/master/README
