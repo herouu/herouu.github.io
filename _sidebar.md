@@ -1,10 +1,4 @@
-* 学习
-  * [Rust 程序设计语言](https://rustwiki.org/zh-CN/book/)
-  * [Go语言圣经](https://golang-china.github.io/gopl-zh/)
-  * [V语言学习笔记](https://lydiandylin.gitbook.io/vlang)
-  * [深入架构原理与实践](https://www.thebyte.com.cn/)
-
-* [github榜单](docs/project.md)
+* [学习](docs/project.md)
 
 * java
 
