@@ -1,4 +1,8 @@
 # <!-- {docsify-ignore-all} -->
+* [Rust 程序设计语言](https://rustwiki.org/zh-CN/book/)
+* [Go语言圣经](https://golang-china.github.io/gopl-zh/)
+* [V语言学习笔记](https://lydiandylin.gitbook.io/vlang)
+* [深入架构原理与实践](https://www.thebyte.com.cn/)
 * [Open Github社区](https://open.itc.cn/)
 * [linux_kernel_wiki](https://github.com/0voice/linux_kernel_wiki)
 * [Linux 性能工具图谱](https://www.brendangregg.com/linuxperf.html)
