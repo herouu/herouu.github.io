@@ -5,3 +5,4 @@
 * 如何阅读《深入理解计算机系统》这本书？
   - https://javabetter.cn/xuexijianyi/read-csapp.html
   - https://www.zhihu.com/question/20402534
+* [Linux Changes](https://kernelnewbies.org/LinuxChanges)
