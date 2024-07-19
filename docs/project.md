@@ -13,3 +13,4 @@
 * Linux 内核揭秘
   -  【英文版】https://github.com/0xAX/linux-insides
   -  【中文版】https://docs.hust.openatom.club/linux-insides-zh
+* [linux-syscall-table](https://filippo.io/linux-syscall-table/)
