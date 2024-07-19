@@ -6,3 +6,6 @@
   - https://javabetter.cn/xuexijianyi/read-csapp.html
   - https://www.zhihu.com/question/20402534
 * [Linux Changes](https://kernelnewbies.org/LinuxChanges)
+* Linux 内核揭秘
+  -  【英文版】https://github.com/0xAX/linux-insides
+  -  【中文版】https://docs.hust.openatom.club/linux-insides-zh
