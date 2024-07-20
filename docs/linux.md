@@ -334,3 +334,23 @@ network:
   - 根据该原理的golang实现：https://github.com/mzz2017/gg.git
 * [nsproxy](https://github.com/nlzy/nsproxy.git)
   - 原理：https://github.com/nlzy/nsproxy/blob/master/README
+
+### perf命令
+
+* 安装 `sudo apt install linux-perf`
+* 报错
+  > $> perf record  
+  Error:  
+  You may not have permission to collect stats.  
+  Consider tweaking /proc/sys/kernel/perf_event_paranoid:  
+  -1 - Not paranoid at all  
+  0 - Disallow raw tracepoint access for unpriv  
+  1 - Disallow cpu events for unpriv  
+  2 - Disallow kernel profiling for unpriv  
+  
+* 解决
+  > sudo sysctl -w kernel.perf_event_paranoid=-1  
+    或者  
+    sudo sh -c 'echo "kernel.perf_event_paranoid=-1" >> /etc/sysctl.conf'  
+    sudo sysctl -p
+
