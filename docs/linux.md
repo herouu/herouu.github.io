@@ -354,3 +354,57 @@ network:
     sudo sh -c 'echo "kernel.perf_event_paranoid=-1" >> /etc/sysctl.conf'  
     sudo sysctl -p
 
+### 性能优化
+
+#### 明明用户CPU使用率已经高达80%，但我却怎么都找不到是哪个进程的问题?
+
+* 第一个原因，进程在不停地崩溃重启，比如因为段错误、配置错误等等，这时，进程在退出后可能又被监控系统自动重启了。
+
+* 第二个原因，这些进程都是短时进程，也就是在其他应用内部通过 exec 调用的外面命令。这些命令一般都只运行很短的时间就会结束，你很难用 top 这种间隔时间比较长的工具发现（上面的案例，我们碰巧发现了）
+
+##### bcc工具install
+
+* https://github.com/iovisor/bcc.git 
+
+`sudo apt-get install bpfcc-tools linux-headers-$(uname -r)`
+
+##### execsnoop-bpfcc
+
+```
+stress           1532552 1532549   0 /usr/local/bin/stress -t 1 -d 1
+stress           1532551 1532550   0 /usr/local/bin/stress -t 1 -d 1
+```
+
+##### 找到父进程 docker容器启动的php-fpm
+`pstree | grep stress` 
+
+```
+ |-containerd-shim-+-php-fpm---5*[php-fpm---sh---stress---stress]
+```
+
+##### 拷贝源码到本地
+
+`docker cp phpfpm:/app .`
+
+##### grep 查找看看是不是有代码在调用stress命令
+
+`grep stress -r app`
+```
+app/index.php:// fake I/O with stress (via write()/unlink()).
+app/index.php:$result = exec("/usr/local/bin/stress -t 1 -d 1 2>&1", $output, $status);
+```
+##### 查看父进程调用stress代码
+
+`cat app/index.php`
+```
+<?php
+// fake I/O with stress (via write()/unlink()).
+$result = exec("/usr/local/bin/stress -t 1 -d 1 2>&1", $output, $status);
+if (isset($_GET["verbose"]) && $_GET["verbose"]==1 && $status != 0) {
+  echo "Server internal error: ";
+  print_r($output);
+} else {
+  echo "It works!";
+}
+```
+
