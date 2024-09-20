@@ -21,7 +21,8 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
-        "https://docker.rainbond.cc"
+        "https://docker.rainbond.cc",
+        "https://dockerproxy.cn"
     ]
 }
 EOF
