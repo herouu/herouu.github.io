@@ -258,3 +258,7 @@ Invoke-Expression (&starship init powershell)
 * excalidraw 草图
 * [graph-easy](https://github.com/ironcamel/Graph-Easy.git)
 
+### github
+* 免费的IP查询API  
+  `https://github.com/ihmily/ip-info-api/blob/main/README.md`
+
