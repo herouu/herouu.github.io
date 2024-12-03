@@ -81,7 +81,7 @@ pip config set global.extra-index-url "https://mirrors.tuna.tsinghua.edu.cn/pypi
 # 加速网站
 
 https://gitmirror.com/
-https://mirror.ghproxy.com/
+https://ghp.ci/
 https://ghps.cc/
 https://gh.ddlc.top/
 
@@ -111,31 +111,7 @@ https://gh.ddlc.top/
 * tsung(<https://github.com/processone/tsung>)
 * go-stress-testing(<https://github.com/link1st/go-stress-testing>)
 
-### scoop
-
-#### scoop安装
-
-```bash
-Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-
-$env:SCOOP='D:\app\scoop'
-[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
-
-irm https://herouu.github.io/shell/scoop/install.ps1 | iex
-```
-
-```bash
-# 国内使用scoop
-https://github.com/duzyn/scoop-cn
-https://github.com/lzwme/scoop-proxy-cn
-
-```
-
-#### bucket自定义
-
-* Scoop bucket(<https://ericzong.github.io/posts/tool-scoop-bucket.html>)
-
-#### tailscale自建节点
+### tailscale自建节点
 
 <https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E7%BA%AF-ip>
 
@@ -176,13 +152,13 @@ docker run -d \
 
 ```
 
-#### window网络重置
+### window网络重置
 
 ```bash
 netsh winsock reset
 ```
 
-#### install java
+### install java
 
 ```bash
 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
@@ -190,7 +166,7 @@ sudo add-apt-repository --yes https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/
 sudo apt-get update
 ```
 
-#### powershell(cmd)美化
+### powershell(cmd)美化
 
 * [starship](https://github.com/starship/starship)
 

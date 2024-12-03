@@ -294,38 +294,6 @@ WantedBy=multi-user.target
 
 [Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
 
-### multipass
-
-```bash
-multipass launch -n herouu -c 2 -d 50G -m 3G 20.04
-```
-
-* 修改静态ip
-
-sudo nano /etc/netplan/50-cloud-init.yaml
-
-```yaml
-network:
-    ethernets:
-        eth0:
-            dhcp4: no
-            addresses: [172.25.192.10/24]
-            optional: true
-            routes:
-              - to: default
-                via: 172.25.192.1
-            nameservers:
-                addresses: [223.5.5.5,223.6.6.6]
-            match:
-                macaddress: 52:54:00:2b:52:ee
-            set-name: eth0
-    version: 2
-```
-
-修改静态ip后,multipass shell连接不上,是host映射匹配不上，修改C:\Windows\System32\drivers\etc\hosts.ics文件中的ip映射关系，如
-`172.25.192.10 vm01.mshome.net`
-
-
 ### 命令行代理
 
 * [proxychains](https://github.com/rofl0r/proxychains-ng)

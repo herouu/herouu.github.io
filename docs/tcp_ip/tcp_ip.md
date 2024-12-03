@@ -14,11 +14,11 @@ tcp/ip 5层协议
 
 * ICMP报文格式
 
-![icmp_报文格式](../static/image/tcp_ip/icmp_报文格式.png)
+![icmp_报文格式](icmp_报文格式.png)
 
 * wireshark
 
-![icmp_wireshark](../static/image/tcp_ip/icmp_wireshark.png)
+![icmp_wireshark](icmp_wireshark.png)
 
 wireshark报文内容与ICMP报文格式一一对应
 

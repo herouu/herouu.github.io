@@ -40,3 +40,8 @@
 
 <https://zhuanlan.zhihu.com/p/216211089>
 <https://www.yoyoask.com/?p=6051>
+
+#### redis single
+```shell
+docker run -d --name redis-server -p 6379:6379 redis
+```
