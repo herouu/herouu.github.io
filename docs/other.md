@@ -67,7 +67,22 @@ $env:HTTPS_PROXY="http://127.0.0.1:10809"
 ### PyPI换源
 
 ```bash
-pip config set global.extra-index-url "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+
+
+# 腾讯源
+pip config set global.index-url http://mirrors.cloud.tencent.com/pypi/simple
+pip config set global.trusted-host mirrors.cloud.tencent.com
+
+
+# 清华源
+pip config set global.index-url http://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
+
+# 临时使用
+pip install tccli -i http://mirrors.cloud.tencent.com/pypi/simple --trusted-host mirrors.cloud.tencent.com
+
+# 多个源，可以多次执行
+pip config set global.extra-index-url https://mirrors.aliyun.com/pypi/simple/
 
 ```
 
