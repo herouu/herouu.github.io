@@ -29,7 +29,8 @@
   * [node](docs/node.md)
 * gist
   * [IterDBUtil](docs/gist/iterdb.md)
-
+* ai
+  * [自然语言处理](docs/ai/自然语言识别/自然语言识别.md)
 * 其他
   * [maven](docs/maven.md)
   * [benchmark](docs/benchmark.md)
