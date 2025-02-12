@@ -32,7 +32,6 @@ wsl --unregister Ubuntu
 wsl --import Ubuntu d:\wsl2\ubuntu d:\ubuntu22.tar --version 2
 ```
 
-
 ### git
 
 ```bash
@@ -203,20 +202,22 @@ Invoke-Expression (&starship init powershell)
 * gost
 
 ```xml
+
 <service>
-  <id>gost-proxy</id>
-  <executable>D:\local\bin\gost.exe</executable>
-  <arguments>-L :1080</arguments>
+    <id>gost-proxy</id>
+    <executable>D:\local\bin\gost.exe</executable>
+    <arguments>-L :1080</arguments>
 </service>
 ```
 
 * virtualbox
 
 ```xml
+
 <service>
-  <id>virtualbox</id>
-  <executable>C:\Users\mlamp\scoop\apps\virtualbox-np\current\VirtualBoxVM.exe</executable>
-  <startarguments>--startvm rockylinux --type headless</startarguments>
+    <id>virtualbox</id>
+    <executable>C:\Users\mlamp\scoop\apps\virtualbox-np\current\VirtualBoxVM.exe</executable>
+    <startarguments>--startvm rockylinux --type headless</startarguments>
 </service>
 ```
 
@@ -227,6 +228,9 @@ Invoke-Expression (&starship init powershell)
 --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
 -javaagent:D:\Program Files\JetBrains\idea\active-agt-idea.jar
 ```
+
+* https://idea.hacks.tools/
+* https://3.jetbra.in/
 
 [idea](https://herouu.github.io/idea/idea.zip)
 
@@ -250,6 +254,7 @@ Invoke-Expression (&starship init powershell)
 * [graph-easy](https://github.com/ironcamel/Graph-Easy.git)
 
 ### github
+
 * 免费的IP查询API  
   `https://github.com/ihmily/ip-info-api/blob/main/README.md`
 
