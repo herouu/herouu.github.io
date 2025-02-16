@@ -1,2 +1,2 @@
-![index](/static/index.excalidraw)  
+![index](/static/index.excalidraw.svg)  
 
