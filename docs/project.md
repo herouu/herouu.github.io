@@ -14,6 +14,6 @@
 * [Linux 内核揭秘【中文版】](https://docs.hust.openatom.club/linux-insides-zh)
 * [linux-syscall-table](https://filippo.io/linux-syscall-table/)
 * [现代 JavaScript 教程](https://zh.javascript.info/)
-* [TypeScript手册](https://bosens-china.github.io/)
+* [TypeScript手册](https://bosens-china.github.io/Typescript-manual/)
 * [vue3资源](https://vue3js.cn/)
 * [Vue3 入门指南与实战案例](https://vue3.chengpeiquan.com/)
