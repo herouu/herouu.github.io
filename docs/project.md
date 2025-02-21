@@ -1,4 +1,5 @@
 # Card
+* [英语兔精华内容整理](https://www.bilibili.com/opus/983678301160603666)
 * [技术文章摘抄](https://learn.lianglianglee.com/)
 * [Rust 程序设计语言](https://rustwiki.org/zh-CN/book/)
 * [Go语言圣经](https://golang-china.github.io/gopl-zh/)
