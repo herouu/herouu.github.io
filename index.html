@@ -46,7 +46,6 @@
             --navbar-root-background: #3F4F44;
             --navbar-root-border-width: 1px;
             --navbar-root-border-radius: 5px;
-
         }
 
         .app-nav li a {
@@ -117,6 +116,13 @@
 
         .markdown-section th:not([align]) {
             text-align: center;
+        }
+
+        .page_toc div[class^="lv"] a {
+            color: var(--sidebar-nav-link-color--hover, var(--sidebar-nav-link-color));
+        }
+        .page_toc div[class^="lv"] a:hover {
+            color: var(--sidebar-nav-link-color--active, #42b983);
         }
     </style>
 </head>
