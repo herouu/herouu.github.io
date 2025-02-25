@@ -1,4 +1,4 @@
-## blog优化清单
+## blog优化
 
 * [ ] 增加演示代码功能
 * [x] 增加csv表格解析
@@ -35,8 +35,9 @@
 
 ## 前端
 
-### [50projects50days](https://github.com/bradtraversy/50projects50days)
+### 50projects50days
 
+[link](https://github.com/bradtraversy/50projects50days)
 ```table
 #,project,Live Demo
 ```
