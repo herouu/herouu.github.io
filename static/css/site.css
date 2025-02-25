@@ -13,13 +13,7 @@ object, img[data-origin$=".excalidraw.svg"] {
 }
 
 .sidebar-nav ul:not(.app-sub-sidebar) > li::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 8px;
     left: -20px;
-    height: 14px;
-    width: 14px
 }
 
 :root {

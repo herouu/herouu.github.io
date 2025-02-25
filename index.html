@@ -30,14 +30,15 @@
     window.$docsify = {
         name: '备忘录',
         repo: 'https://github.com/herouu/herouu.github.io',
-        maxLevel: 5,//最大支持渲染的标题层级
+        maxLevel: 6,//最大支持渲染的标题层级
         subMaxLevel: 2,
         coverpage: false,
         loadSidebar: true,
         loadNavbar: true,
         auto2top: true,//切换页面后是否自动跳转到页面顶部
         alias: {
-            '/.*/_sidebar.md': '/_sidebar.md'
+            '/.*/_sidebar.md': '/_sidebar.md',
+            '/.*/_navbar.md': '/_navbar.md'
         },
         toc: {
             tocMaxLevel: 5,
@@ -130,7 +131,7 @@
 <script src="https://fastly.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
 
 <!-- 主题 -->
-<script src="https://fastly.jsdelivr.net/npm/docsify-themeable/dist/js/docsify-themeable.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/docsify-themeable/dist/js/docsify-themeable.js"></script>
 
 <!-- flexible-alerts -->
 <script
