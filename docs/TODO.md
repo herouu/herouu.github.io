@@ -1,8 +1,37 @@
 ## blog优化
 
-* [ ] 增加演示代码功能
+* [x] 增加演示代码功能
+
+````text
+// json5格式
+```demo
+{vue: 'demos/test.vue',html: 'demos/test.html'}
+```
+````
+
+```demo
+{vue: 'docs/demos/vue/count.vue',html: 'docs/demos/html/count.html'}
+```
+
 * [x] 增加csv表格解析
+
+````markdown
+```table
+学习项,状态
+语法,🚀
+```
+````
+
 * [x] 解析notability的.note格式to svg
+
+```markdown
+![](Notability>>notablity/20250223.note)
+```
+
+
+![](Notability>>notability/20250223.note)
+
+
 * [x] 增加Bilibili、Youtube视频链接解析器
 
 ```markdown
@@ -17,10 +46,10 @@
 ![](Lottie>>static/lottie_index.json)
 ```
 
->[!note]
->🚀-doing ❌-abandon ✔️-finish
+> [!note]
+> 🚀-doing ❌-abandon ✔️-finish
 
-## 英语 
+## 英语
 
 ```table
 学习项,状态
@@ -38,6 +67,7 @@
 ### 50projects50days
 
 [link](https://github.com/bradtraversy/50projects50days)
+
 ```table
 #,project,Live Demo
 ```
