@@ -267,6 +267,14 @@ docker run -d --name adguardhome \
 
 参考: [利用 Mosdns 和 AdGuardHome 搭建自己的 DNS](https://www.xukecheng.tech/use-mosdns-and-adguardhome-to-build-your-own-dns)
 
+
+#### DNS安全协议
+
+* DNSSEC
+* DNSCrypt
+* DNS over TLS
+* DNS over HTTPS
+
 ### systemd
 
 * [simple-online-systemd-service-generator](https://techoverflow.net/2019/03/11/simple-online-systemd-service-generator/)
