@@ -18,3 +18,5 @@
 * [TypeScript手册](https://bosens-china.github.io/Typescript-manual/)
 * [vue3资源](https://vue3js.cn/)
 * [Vue3 入门指南与实战案例](https://vue3.chengpeiquan.com/)
+* [月维周刊](https://moonvy.com/blog/)
+* [潮流周刊](https://weekly.tw93.fun/)
