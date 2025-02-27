@@ -76,3 +76,6 @@
 * 编译原理
 * 操作系统
 * 计算机图形学
+
+## 待读
+* Reverse Engineering for Beginners

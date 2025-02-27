@@ -1,4 +1,4 @@
-* [学习](docs/project.md)
+* [学习](docs/学习.md)
 
 * java
   * [微服务](docs/微服务.md)
