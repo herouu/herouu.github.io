@@ -35,3 +35,8 @@ numcurves,曲线的数量,
 [ProperTree](https://github.com/corpnewt/ProperTree)
 
 ### demo code preview
+
+
+### vue3组件间通讯
+
+[Vue3 组件通信方式](https://juejin.cn/post/7241114001324113975)
