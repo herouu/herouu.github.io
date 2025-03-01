@@ -1,10 +1,10 @@
 * [学习](docs/学习.md)
 
 * java
-  * [微服务](docs/微服务.md)
-  * [可观测](docs/可观测/可观测.md)
-  * [graalvm](docs/graalvm.md)
-  * [openjdk编译](docs/openjdk/openjdk_index.md)
+    * [微服务](docs/微服务.md)
+    * [可观测](docs/可观测/可观测.md)
+    * [graalvm](docs/graalvm.md)
+    * [openjdk编译](docs/openjdk/openjdk_index.md)
 
 * 计算机网络
     * [tcp/ip](docs/网络/tcp_ip.md)
@@ -41,9 +41,12 @@
 * 物联网
     * [物联网](docs/物联网/物联网.md)
     * [智能设备](docs/物联网/智能设备.md)
-  
+* 英语
+    * [英语语法笔记](docs/英语/语法.md)
+* 日语
+    * [日语学习](docs/日语/学习方法.md)
 * 其他
     * [maven](docs/maven.md)
     * [benchmark](docs/benchmark.md)
     * [other](docs/other.md)
-    * [英语语法笔记](docs/英语/语法.md)
+    

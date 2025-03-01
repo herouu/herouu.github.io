@@ -81,6 +81,9 @@ input[type=checkbox]:checked::after {
     width: fit-content;
 }
 
+thead tr{
+    background: #333333;
+}
 
 /* 设置表格内部单元格的边框 */
 td:not(:last-child),
