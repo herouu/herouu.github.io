@@ -21,7 +21,7 @@ curveUUIDs,,
 curvescolors,颜色,✅
 curvesfractionalwidths,曲线分数宽度,❓
 curvesnumpoints,曲线点数,✅
-curvesforces,曲线力,
+curvesforces,曲线力(下笔的强度),
 curvesazimuthunitvector,曲线的方位角单位向量,
 curveswidth,曲线的宽度,✅
 curvesstyles,曲线样式,
