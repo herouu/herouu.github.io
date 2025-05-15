@@ -35,7 +35,6 @@ server-id=100
 log-bin=mysql-bin
 ```
 
-
 * mysql slave
 
 ```bash
@@ -89,6 +88,23 @@ stop slave
 ```
 
 ### performance sql
+
+* 查询mysql版本
+
+```sql
+select version()
+```
+
+* 查看事务隔离级别
+
+```sql
+#
+1.查看当前会话隔离级别
+select @@transaction_isolation;
+#
+2.查看系统当前隔离级别
+select @@global.transaction_isolation;
+```
 
 * 按客户端IP分组,看哪个客户端的链接数最多
 
