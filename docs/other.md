@@ -45,6 +45,10 @@ wsl --import Ubuntu d:\wsl2\ubuntu d:\ubuntu22.tar --version 2
 
 # ERROR: failed to receive handshake, SSL/TLS connection failed
 git config --global http.sslBackend schannel
+
+# git设置user.name 和 user.email
+git config --global user.name "名字"
+git config --global user.email "邮箱"
 ```
 
 ### cmd代理
