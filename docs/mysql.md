@@ -5,9 +5,32 @@ docker run -itd --restart=always -p 3306:3306 \
 --name mysql \
 -v /home/herouu/dev/mysql/conf:/etc/mysql/conf \
 -v /home/herouu/dev/mysql/data:/var/lib/mysql \
--v /home/herouu/dev/mysql/logs:/logs \
+-v /home/herouu/dev/mysql/logs:/var/logs/mysql \
+-v /home/herouu/dev/mysql/my.cnf:/etc/my.cnf \
+-e TZ=Asia/Shanghai \
 -e MYSQL_ROOT_PASSWORD=123456 \
-mysql:latest
+mysql:8.0-debian
+```
+
+```text
+[mysqld]
+# 通用日志
+general_log = 1
+general_log_file = /var/logs/mysql/mysql.log 
+# log_output=FILE # FILE/TABLE,默认FILE
+
+# 慢查询日志（性能调优必备）
+slow_query_log = 1
+slow_query_log_file = /var/logs/mysql/mysql-slow.log
+long_query_time = 2  # 超过2秒的查询记录
+
+# 二进制日志（主从复制、数据恢复）
+log_bin = /var/logs/mysql/mysql-bin
+expire_logs_days = 7  # 日志保留天数
+max_binlog_size = 100M
+
+# 错误日志
+log_error = /var/logs/mysql/mysql-error.log
 ```
 
 ### mysql主从配置
@@ -484,3 +507,57 @@ myloader -h XXX.XXX.XXX.XXX -P 3306 -u root -p 123456 -B database_name -o -d bac
 <https://github.com/hcymysql>
 
 mysqlstat 工具挺好使
+
+### 事务
+
+### 日志
+
+#### 错误日志
+
+```bash
+-- 查看错误日志是否开启（通常默认开启）
+SHOW VARIABLES LIKE 'log_error';        -- 错误日志路径
+SHOW VARIABLES LIKE 'log_error_verbosity';  -- 日志详细程度 1=错误，2=错误+警告，3=错误+警告+信息
+```
+
+#### 慢查询日志
+
+```bash
+-- 检查慢查询日志是否开启
+SHOW VARIABLES LIKE 'slow_query_log';  -- OFF/ON
+
+-- 查看慢查询阈值（秒）
+SHOW VARIABLES LIKE 'long_query_time';  -- 默认 10 秒
+
+-- 查看日志文件路径
+SHOW VARIABLES LIKE 'slow_query_log_file';
+```
+
+```bash
+# 慢查询日志分析
+ sudo pt-query-digest /home/herouu/dev/mysql/logs/mysql-slow.log > slow_report.txt
+```
+
+#### 通用日志
+
+```bash
+-- 查看当前状态
+SHOW VARIABLES LIKE 'general_log';    -- OFF/ON
+SHOW VARIABLES LIKE 'log_output';     -- 'FILE' 或 'TABLE'
+SHOW VARIABLES LIKE 'general_log_file';  -- 日志文件路径
+```
+
+#### 二进制日志
+
+```bash
+SHOW VARIABLES LIKE '%log_bin%';
+SHOW VARIABLES LIKE '%binlog_format%';
+```
+
+```bash
+# binlog解析sql
+mysqlbinlog mysql-bin.000005 > mysql-bin.000005.txt
+pt-query-digest --type binlog mysql-bin.000005.txt
+
+# 工具 my2sql binlog2sql MyFlash
+```
