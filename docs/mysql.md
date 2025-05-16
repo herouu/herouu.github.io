@@ -98,12 +98,18 @@ select version()
 * 查看事务隔离级别
 
 ```sql
-#
-1.查看当前会话隔离级别
+
+-- 1.查看当前会话隔离级别 
+-- 8.0+
 select @@transaction_isolation;
-#
-2.查看系统当前隔离级别
+-- 5.0+
+select @@tx_isolation;
+
+-- 2.查看系统当前隔离级别
+-- 8.0+
 select @@global.transaction_isolation;
+-- 5.0+
+select @@global.tx_isolation;
 ```
 
 * 按客户端IP分组,看哪个客户端的链接数最多

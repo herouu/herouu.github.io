@@ -5,12 +5,30 @@
 ```bash
 bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
 ```
+!>
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http:
+//%2Fvar%2Frun%2Fdocker.sock/v1.49/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
+>[!TIP]上述问题解决
 
 * 添加docker用户组
 
 ```bash
+# 方式1: 添加用户至docker组
 sudo usermod -a -G docker $USER
+sudo gpasswd -a $USER docker
 
+[注意]: docker用户组添加后需要关闭当前shell验证
+
+# 查询当前用户所在的group
+groups $USER
+
+# 从group中移出用户
+sudo gpasswd -d $USER docker
+sudo deluser $USER docker
+
+
+# 方式2(不推荐):
 sudo chmod a+rw /var/run/docker.sock
 ```
 
