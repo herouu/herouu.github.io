@@ -1,5 +1,16 @@
 ## window <!-- {docsify-ignore-all} -->
 
+### window系统优化
+
+* chrome浏览器内存
+>使用插件Tab Suspender
+
+* vmmem
+>Vmmem：是一个系统合成的虚拟进程，用于表示虚拟机小航的内存和CPU资源。 换句话说，您看到的Vmmem消耗大量内存和CPU资源，也就意味着虚拟机正在消耗大量的内存和CPU资源
+
+* Antimalware Service Executable cpu占用高
+>使用软件Windows Defender Service关闭Windows Defender
+
 ### wsl2
 
 #### .wslconfig
