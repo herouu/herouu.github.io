@@ -510,6 +510,12 @@ mysqlstat 工具挺好使
 
 ### 事务
 
+### 锁
+
+基于锁的属性分类：共享锁、排他锁。
+基于锁的粒度分类：表锁、行锁、记录锁、间隙锁、临键锁。
+基于锁的状态分类：意向共享锁、意向排它锁。
+
 ### 日志
 
 #### 错误日志
@@ -535,7 +541,7 @@ SHOW VARIABLES LIKE 'slow_query_log_file';
 
 ```bash
 # 慢查询日志分析
- sudo pt-query-digest /home/herouu/dev/mysql/logs/mysql-slow.log > slow_report.txt
+sudo pt-query-digest /home/herouu/dev/mysql/logs/mysql-slow.log > slow_report.txt
 ```
 
 #### 通用日志
@@ -555,9 +561,12 @@ SHOW VARIABLES LIKE '%binlog_format%';
 ```
 
 ```bash
-# binlog解析sql
+# 不推荐使用pt-query-digest解析binlog
 mysqlbinlog mysql-bin.000005 > mysql-bin.000005.txt
 pt-query-digest --type binlog mysql-bin.000005.txt
 
-# 工具 my2sql binlog2sql MyFlash
+# 工具 my2sql(推荐) binlog2sql MyFlash
+# my2sql可以找出某个时间点数据库是否有大事务或者长事务
+# my2sql解析binlog为sql语句
+my2sql -user root -password xxx -host 192.168.x.x -mode file -local-binlog-file ./mysql-bin.000005  -work-type 2sql  -start-file mysql-bin.000005  -output-dir ./sql
 ```
