@@ -11,6 +11,12 @@
 * Antimalware Service Executable cpu占用高
 >使用软件Windows Defender Service关闭Windows Defender
 
+* thinkpad热键驱动
+>[SIhotkey-r0yvu37w](https://herouu.github.io/soft/SIhotkey-r0yvu37w.exe)
+
+
+
+
 ### wsl2
 
 #### .wslconfig
