@@ -34,6 +34,12 @@ log_error = /var/logs/mysql/mysql-error.log
 
 # 性能监控
 performance_schema = ON
+
+# 标准InnoDB 监视器的定期输出
+innodb_status_output = ON
+
+# 启用锁信息
+innodb_status_output_locks = ON
 ```
 
 ### mysql主从配置
