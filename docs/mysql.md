@@ -31,6 +31,9 @@ max_binlog_size = 100M
 
 # 错误日志
 log_error = /var/logs/mysql/mysql-error.log
+
+# 性能监控
+performance_schema = ON
 ```
 
 ### mysql主从配置
@@ -135,6 +138,11 @@ select @@global.transaction_isolation;
 select @@global.tx_isolation;
 ```
 
+```sql
+-- 查看performance_schema是否开启
+SHOW VARIABLES LIKE 'performance_schema';
+```
+
 * 按客户端IP分组,看哪个客户端的链接数最多
 
 ```sql
@@ -159,6 +167,13 @@ from information_schema.processlist
 where Command != 'Sleep' and Time > 300
 order by Time desc;
 
+--如何监控那些正在执行的事务
+select * from sys.processlist;
+show processlist;
+select * from information_schema.processlist;
+select * from sys.session;
+select * from information_schema.innodb_trx;
+select * from performance_schema.events_statements_current;
 ```
 
 * 查看正在锁的事务
@@ -167,68 +182,28 @@ order by Time desc;
 SELECT *
 FROM INFORMATION_SCHEMA.INNODB_TRX
 order by trx_started;
-kill
-trx_mysql_thread_id列
+kill {trx_mysql_thread_id列}
 ```
 
-```bash
-Waiting for table metadata lock
-```
 
-* 数据库问题排查
+!>Waiting for table metadata lock
+
+
+### 数据库问题排查
+
+!>Waiting for table metadata lock
 
 ```sql
--- 查看锁等待时间
-show
-variables like 'innodb_lock_wait_timeout';  
--- 设置锁等待时间
-set
-innodb_lock_wait_timeout=600;
---注意global的修改对当前线程是不生效的，只有建立新的连接才生效
-set
-global innodb_lock_wait_timeout=600;
+SELECT
+  w.*,
+  p.STATE,
+  p.INFO
+FROM
+  sys.schema_table_lock_waits w
+    JOIN `performance_schema`.`processlist` p ON w.blocking_pid = p.id
 ```
 
-```sql
--- 模拟 
--- 事务1
-begin;
-update tt
-set name='步骤一'
-where id = 1;
-
--- 事务2
-begin;
-select *
-from tt
-where id = 1;
-```
-
-```sql
---排查问题核心表
-
--- 事务表
-select *
-from information_schema.innodb_trx;
--- 锁等待表
-select *
-from sys.innodb_lock_waits;
-
--- PROCESSLIST_ID与mysql thread_id关系表
-select *
-from performance_schema.threads;
-
--- mysql8锁信息表
-select *
-from performance_schema.data_locks;
-
--- 历史语句事件表
-select *
-from performance_schema.events_statements_history;
-select *
-from performance_schema.events_statements_current;
-
-```
+!>1205 - Lock wait timeout exceeded; try restarting transaction
 
 ```sql
 -- 长事务造成的Lock wait timeout exceeded
@@ -249,7 +224,21 @@ ORDER BY t.processlist_time DESC;
 -- 查询长事务sql 
 select *
 from performance_schema.events_statements_history
-where thread_id = #{block_thread_id};
+where thread_id = #{block_thread_id} order by timer_start desc;
+
+SELECT trx_id,
+       INNODB_TRX.trx_state,
+       INNODB_TRX.trx_started,
+       se.conn_id AS processlist_id,
+       trx_lock_memory_bytes,
+       se.USER,
+       se.command,
+       se.state,
+       se.current_statement,
+       se.last_statement
+FROM information_schema.INNODB_TRX,
+     sys.SESSION AS se
+WHERE trx_mysql_thread_id = conn_id;
 
 ```
 
@@ -278,8 +267,57 @@ WHERE t.trx_state = 'RUNNING'
   AND p.command = 'Sleep';
 ```
 
-* 修改字符集
-    * 修改库字符集
+
+
+```sql
+-- 查看锁等待时间
+show variables like 'innodb_lock_wait_timeout';  
+-- 设置锁等待时间
+set innodb_lock_wait_timeout=600;
+--注意global的修改对当前线程是不生效的，只有建立新的连接才生效
+set global innodb_lock_wait_timeout=600;
+```
+
+```sql
+-- 模拟 
+-- 事务1
+begin;
+update tt
+set name='步骤一'
+where id = 1;
+
+-- 事务2
+begin;
+select *
+from tt
+where id = 1;
+```
+
+```sql
+--排查问题核心表
+
+-- 事务表
+select * from information_schema.innodb_trx;
+-- 锁等待表
+select * from sys.innodb_lock_waits;
+
+-- PROCESSLIST_ID与mysql thread_id关系表
+select * from performance_schema.threads;
+
+-- mysql8锁信息表
+select * from performance_schema.data_locks;
+
+-- 历史语句事件表
+select * from performance_schema.events_statements_history;
+select * from performance_schema.events_statements_current;
+
+```
+
+
+
+### 修改字符集
+
+* 修改库字符集
 
        ```sql
       SELECT
@@ -291,46 +329,41 @@ WHERE t.trx_state = 'RUNNING'
           AND lower( default_collation_name ) IN ( 'utf8mb4_unicode_ci' );
       ```
 
-    * 修改表字符集
+* 修改表字符集
 
-      ```sql
-      SELECT
-          concat( 'alter table ', table_schema, '.', table_name, ' default character set utf8mb4 collate = utf8mb4_0900_ai_ci;' )
-      FROM
-          information_schema.TABLES
-      WHERE
-          table_schema IN ( 'dbName' )
-          AND table_type = 'BASE TABLE'
-          AND lower( table_collation ) IN ( 'utf8mb4_unicode_ci' );
-      ```
+```sql
+  SELECT concat('alter table ', table_schema, '.', table_name,
+                ' default character set utf8mb4 collate = utf8mb4_0900_ai_ci;')
+  FROM information_schema.TABLES
+  WHERE table_schema IN ('dbName')
+    AND table_type = 'BASE TABLE'
+    AND lower(table_collation) IN ('utf8mb4_unicode_ci');
+```
 
-    * 修改表中字段字符集
+* 修改表中字段字符集
 
-      ```sql
-      SELECT
-          concat(
-          concat( 'alter table ', t1.table_schema, '.', t1.table_name ),
-          concat(
-          ' modify ','`',t1.column_name,'` ',
-          t1.data_type,
-          IF
-          ( t1.data_type IN ( 'varchar', 'char' ), concat( '(', t1.character_maximum_length, ')' ), '' ),
-          ' character set utf8mb4 collate utf8mb4_0900_ai_ci',
-          IF
-          ( t1.is_nullable = 'NO', ' not null', ' null' ),
-          ' comment ',
-          '''',
-          t1.column_comment,
-          ''';'
-          )) alter_sql
-      FROM
-          information_schema.COLUMNS t1
-      WHERE
-          lower( t1.collation_name ) IN ( 'utf8mb4_unicode_ci' )
-          AND t1.table_schema IN (
-          'dbName'
-          )
-      ```
+```sql
+  SELECT concat(
+                 concat('alter table ', t1.table_schema, '.', t1.table_name),
+                 concat(
+                         ' modify ', '`', t1.column_name, '` ',
+                         t1.data_type,
+                         IF
+                         (t1.data_type IN ('varchar', 'char'), concat('(', t1.character_maximum_length, ')'), ''),
+                         ' character set utf8mb4 collate utf8mb4_0900_ai_ci',
+                         IF
+                         (t1.is_nullable = 'NO', ' not null', ' null'),
+                         ' comment ',
+                         '''',
+                         t1.column_comment,
+                         ''';'
+                 )) alter_sql
+  FROM information_schema.COLUMNS t1
+  WHERE lower(t1.collation_name) IN ('utf8mb4_unicode_ci')
+    AND t1.table_schema IN (
+    'dbName'
+    )
+```
 
 * 表行数排名
 
