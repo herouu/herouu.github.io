@@ -8,6 +8,7 @@
 
 * 计算机网络
     * [tcp/ip](docs/网络/tcp_ip.md)
+    * [科学上网](docs/网络/科学上网/bypass.md)
 
 * 数据库
     * [mysql](docs/mysql.md)
@@ -53,4 +54,5 @@
     * [maven](docs/maven.md)
     * [benchmark](docs/benchmark.md)
     * [other](docs/other.md)
+    * [msys2](docs/msys2/msys2.md)
     
