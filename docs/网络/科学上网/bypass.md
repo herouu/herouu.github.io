@@ -8,8 +8,9 @@
 
 https://github.com/XTLS/Xray-core/discussions/1295
 
-#### 对抗
-
+#### 规避特征
+* [xtls](https://github.com/XTLS/Xray-core/discussions/1295)
+![](Youtube>>7GHh91AYAmM?si=N4t8Afr8M05sM08L)
 * [anytls](https://github.com/anytls/anytls-go.git)
 
 * anyreality

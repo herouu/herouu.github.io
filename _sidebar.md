@@ -9,6 +9,7 @@
 * 计算机网络
     * [tcp/ip](docs/网络/tcp_ip.md)
     * [科学上网](docs/网络/科学上网/bypass.md)
+    * [socks](docs/网络/socks.md)
 
 * 数据库
     * [mysql](docs/mysql.md)
