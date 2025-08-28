@@ -58,3 +58,9 @@ public class Main {
 ![openjdk_clion_1.png](openjdk_clion_1.png)
 
 参考：[一、编译及调试OpenJDK18](https://lauloon9.tech/2022/04/02/jvm/%E4%B8%80%E3%80%81%E7%BC%96%E8%AF%91%E5%8F%8A%E8%B0%83%E8%AF%95OpenJDK18/)
+
+
+### 使用远程环境开发c代码
+
+* 解决头文件找不到的问题
+![img.png](远程头文件同步.png)
